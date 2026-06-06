@@ -1,0 +1,28 @@
+[
+  {
+    "id": "social_0001",
+    "source_content": "foam-core-cement-panel",
+    "platform": "instagram",
+    "status": "draft",
+    "caption": "Building with foam + cement: the low-cost panel system transforming what's possible with basic materials. Lightweight. Insulating. Field-tested in Puerto Vallarta. Full guide on Infinite Architecture. Link in bio.",
+    "hook": "What if your wall cost $40 USD and weighed nothing?",
+    "visual_prompt": "Close-up of hands pressing AR mesh into fresh cement on XPS foam — warm concrete tones, overhead architectural shot, low light, editorial",
+    "short_video_script": "Open: hands cutting XPS foam with utility knife. Cut: applying mesh. Cut: troweling mortar over mesh. Cut: finished panel — knuckle tap sound. Text: 'Foam-Core Cement Panel — free guide at Infinite Architecture'",
+    "hashtags": ["#ferrocement", "#diyarchitecture", "#lowcostbuild", "#concretepanel", "#sustainablebuild", "#mexicobuild", "#puertovallarta"],
+    "scheduled_for": null,
+    "review_bead": "IA-BEAD-0002"
+  },
+  {
+    "id": "social_0002",
+    "source_content": "ferrocement-barrel-roof",
+    "platform": "instagram",
+    "status": "draft",
+    "caption": "Barrel roofs built with cattle panel and ferrocement mortar. Thin shell. Beautiful curve. 30-50 year lifespan. The ancient system that still works. ⚠️ Requires engineering review for inhabited spaces — full safety guide on Infinite Architecture.",
+    "hook": "You can build this curved roof with cattle panel and cement.",
+    "visual_prompt": "Wide-angle shot of ferrocement barrel roof exterior — warm golden light, tropical vegetation, raw concrete texture visible",
+    "short_video_script": "Time-lapse: bending cattle panel to barrel curve. Applying diamond mesh layers. Pressing mortar through. Final barrel vault — pan from inside showing the curve.",
+    "hashtags": ["#ferrocement", "#barrelroof", "#thinshell", "#concreteshell", "#architectureroof", "#diyarchitecture"],
+    "scheduled_for": null,
+    "review_bead": "IA-BEAD-0002"
+  }
+]

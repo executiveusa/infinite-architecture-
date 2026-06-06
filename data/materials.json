@@ -1,0 +1,253 @@
+[
+  {
+    "id": "foamular-xps",
+    "name": "FOAMULAR XPS",
+    "spanish_name": "poliestireno extruido XPS",
+    "category": "foam",
+    "local_names": ["FOAMULAR", "XPS", "telgopor extruido"],
+    "common_sizes": ["1\" (25mm)", "2\" (50mm)", "3\" (75mm)", "4\" (100mm)"],
+    "best_uses": [
+      "Form core for cement panels",
+      "Counter and sink form",
+      "Barrel roof form",
+      "Insulation layer under cement"
+    ],
+    "avoid_for": [
+      "Bulk structural fill without full cement encapsulation",
+      "Exposed exterior — must be fully coated",
+      "High-temperature applications near stoves/fire"
+    ],
+    "supplier_notes": [
+      "Available at COMEX, Home Depot MX, Bricolage",
+      "Check local foam suppliers — may carry under different brand names"
+    ],
+    "price_observations": [
+      "Approximately MXN 150–250 per sheet (2\"x4'x8'), prices vary by thickness"
+    ],
+    "risks": [
+      "COMBUSTIBLE — must always be fully encapsulated in cement or non-combustible material",
+      "UV degradation if left uncoated",
+      "Toxic smoke when burned"
+    ],
+    "substitutes": ["eps-standard"]
+  },
+  {
+    "id": "eps-standard",
+    "name": "EPS (Expanded Polystyrene)",
+    "spanish_name": "poliestireno expandido EPS",
+    "category": "foam",
+    "local_names": ["unicel", "telgopor", "eps"],
+    "common_sizes": ["Various — typically sold in blocks or custom-cut sheets"],
+    "best_uses": [
+      "Form core for curved/organic shapes",
+      "Raised bed interior fill",
+      "Non-load-bearing form work"
+    ],
+    "avoid_for": [
+      "Water-exposed without encapsulation",
+      "Load-bearing without reinforcement",
+      "High-precision form work (less rigid than XPS)"
+    ],
+    "supplier_notes": [
+      "\"Unicel\" is the most common local brand in Mexico",
+      "Available at COMEX, hardware stores, sometimes block manufacturers"
+    ],
+    "price_observations": [
+      "Generally cheaper than XPS — MXN 80–150 per sheet depending on density"
+    ],
+    "risks": [
+      "COMBUSTIBLE — encapsulate fully",
+      "Lower compressive strength than XPS",
+      "Can absorb some moisture at edges if not sealed"
+    ],
+    "substitutes": ["foamular-xps"]
+  },
+  {
+    "id": "ar-fiberglass-mesh",
+    "name": "AR Fiberglass Mesh",
+    "spanish_name": "malla de fibra de vidrio resistente a álcalis",
+    "category": "reinforcement",
+    "local_names": ["malla fibra vidrio AR", "malla alcali-resistente"],
+    "common_sizes": ["4\" x 4\" opening", "2\" x 2\" opening", "rolls of various width"],
+    "best_uses": [
+      "Primary reinforcement layer in ferrocement shells",
+      "Crack resistance in thin-shell cement panels",
+      "Over foam forms before cement coat"
+    ],
+    "avoid_for": [
+      "Replacement with ordinary fiberglass cloth (degrades in cement)",
+      "Structural spanning without additional support"
+    ],
+    "supplier_notes": [
+      "Harder to source locally in Puerto Vallarta — check tile/waterproofing suppliers",
+      "SIKA and other waterproofing suppliers sometimes carry AR mesh"
+    ],
+    "price_observations": ["MXN 80–200 per sqm depending on weight and source"],
+    "risks": [
+      "Standard fiberglass cloth (boat fiberglass) is NOT a substitute for AR mesh in cement",
+      "Misidentification risk — always confirm alkali-resistant rating"
+    ],
+    "substitutes": ["diamond-mesh"]
+  },
+  {
+    "id": "diamond-mesh",
+    "name": "Diamond Mesh",
+    "spanish_name": "malla de alambre hexagonal / malla rombo",
+    "category": "reinforcement",
+    "local_names": ["malla hexagonal", "malla gallinero", "chicken wire", "malla rombo"],
+    "common_sizes": ["1\" opening", "3/4\" opening", "rolls of 1m, 1.5m, 2m width"],
+    "best_uses": [
+      "Traditional ferrocement reinforcement",
+      "Multiple layers for shell strength",
+      "Stucco and mortar backing"
+    ],
+    "avoid_for": [
+      "Wide-spanning structural elements without engineering review",
+      "High-corrosion environments without galvanizing"
+    ],
+    "supplier_notes": [
+      "Widely available in Puerto Vallarta at ferreteras and construction suppliers",
+      "Galvanized preferred for exterior and wet conditions"
+    ],
+    "price_observations": ["MXN 60–120 per roll — affordable and widely available"],
+    "risks": [
+      "Rust if not galvanized and cement encapsulation is poor",
+      "Opening too large for fine mortar mixes — match mesh to mix viscosity"
+    ],
+    "substitutes": ["ar-fiberglass-mesh", "cattle-panel"]
+  },
+  {
+    "id": "cattle-panel",
+    "name": "Cattle Panel / Welded Wire",
+    "spanish_name": "malla soldada / panel de alambre soldado",
+    "category": "reinforcement",
+    "local_names": ["malla soldada", "panel de rancho", "corral panel"],
+    "common_sizes": ["4'x16' panels", "various wire gauges 9–12 gauge"],
+    "best_uses": [
+      "Barrel roof primary structure — spans and curves",
+      "Raised bed structural frame",
+      "Fence panel structure"
+    ],
+    "avoid_for": [
+      "Fine detail work",
+      "Thin shells (too heavy, too rigid for tight curves)"
+    ],
+    "supplier_notes": [
+      "Available at agricultural suppliers, some ferreteras",
+      "Often sold by agricultural/livestock supply stores in Mexico"
+    ],
+    "price_observations": ["MXN 200–500 per panel depending on gauge and size"],
+    "risks": [
+      "Heavy — requires adequate support during forming",
+      "Rust risk if encapsulation is poor"
+    ],
+    "substitutes": ["rebar"]
+  },
+  {
+    "id": "portland-cement",
+    "name": "Portland Cement",
+    "spanish_name": "cemento Portland",
+    "category": "binder",
+    "local_names": ["cemento Tolteca", "cemento Cruz Azul", "cemento gris"],
+    "common_sizes": ["50kg bag (standard in MX)"],
+    "best_uses": [
+      "All cementitious mixes",
+      "Ferrocement mortar",
+      "Thin shell base coat",
+      "Stucco"
+    ],
+    "avoid_for": [
+      "Exposure without waterproofing in coastal/humid environments without sealer"
+    ],
+    "supplier_notes": [
+      "Tolteca and Cruz Azul are the dominant brands in Jalisco",
+      "Available at any ferreterа or COMEX"
+    ],
+    "price_observations": ["MXN 150–200 per 50kg bag (2026 approximate)"],
+    "risks": [
+      "Caustic when wet — use gloves and eye protection",
+      "Requires damp curing for 7–28 days",
+      "Wrong water:cement ratio weakens the final material significantly"
+    ],
+    "substitutes": []
+  },
+  {
+    "id": "fine-sand",
+    "name": "Fine Sand",
+    "spanish_name": "arena fina",
+    "category": "aggregate",
+    "local_names": ["arena fina", "arena lavada", "arena de río"],
+    "common_sizes": ["Sold by cubic meter or in 50kg bags"],
+    "best_uses": [
+      "Mortar mixes for thin shells",
+      "Ferrocement mortar matrix",
+      "Plaster finish coats"
+    ],
+    "avoid_for": [
+      "Structural concrete requiring coarse aggregate"
+    ],
+    "supplier_notes": [
+      "Aggregates suppliers throughout Puerto Vallarta — look for \"materialeros\"",
+      "Quality varies — sieve and wash if needed"
+    ],
+    "price_observations": ["MXN 400–700 per cubic meter delivered"],
+    "risks": [
+      "Clay contamination weakens mix — test quality before large batches",
+      "Salt contamination in coastal areas can cause reinforcement corrosion"
+    ],
+    "substitutes": []
+  },
+  {
+    "id": "sikalatex",
+    "name": "SikaLatex",
+    "spanish_name": "SikaLatex / látex para mortero",
+    "category": "admixture",
+    "local_names": ["SikaLatex", "látex Sika"],
+    "common_sizes": ["1L bottle", "5L jug", "20L drum"],
+    "best_uses": [
+      "Adhesion improver in cement/mortar coats over foam",
+      "Reduces shrinkage cracking",
+      "Bond coat improvement"
+    ],
+    "avoid_for": [
+      "Use as bulk structural binder — it is an admixture, not a primary binder"
+    ],
+    "supplier_notes": [
+      "Available at COMEX, Sika distributors in Puerto Vallarta",
+      "Follow manufacturer dilution ratio — typically 1:2 to 1:4 latex:water"
+    ],
+    "price_observations": ["MXN 200–400 per liter — use sparingly per spec"],
+    "risks": [
+      "Overuse can trap moisture and cause delamination",
+      "Shelf life after opening — use within recommended period"
+    ],
+    "substitutes": ["bonding-agent-generic"]
+  },
+  {
+    "id": "pegapiso",
+    "name": "Pegapiso / Porcelanato Adhesive",
+    "spanish_name": "pegapiso / adhesivo para porcelanato",
+    "category": "adhesive",
+    "local_names": ["pegapiso", "pegaceramic", "adhesivo cerámico"],
+    "common_sizes": ["20kg bag"],
+    "best_uses": [
+      "Thin bond coat over foam or cementboard",
+      "Scratch coat adhesion layer",
+      "Setting tile over cementitious surfaces"
+    ],
+    "avoid_for": [
+      "Bulk structural use — NOT a structural material",
+      "Thick applications — it is a thin-coat adhesive"
+    ],
+    "supplier_notes": [
+      "Available at any tile/ferretería in Puerto Vallarta",
+      "Equivalent to US thinset in application method"
+    ],
+    "price_observations": ["MXN 100–200 per 20kg bag"],
+    "risks": [
+      "Often mistakenly used as a bulk structural material — INCORRECT use",
+      "Must be applied over properly primed/roughened substrate"
+    ],
+    "substitutes": []
+  }
+]

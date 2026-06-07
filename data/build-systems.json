@@ -1,0 +1,449 @@
+[
+  {
+    "id": "foam-core-cement-panel",
+    "title": "Foam-Core Cement Panel",
+    "summary": "A lightweight, insulating structural panel made from XPS foam core encapsulated in fiberglass mesh and Portland cement mortar. Suitable for non-load-bearing walls, countertops, decorative elements, and test panels.",
+    "category": "foam-composite",
+    "difficulty": "beginner",
+    "use_cases": [
+      "Non-load-bearing interior walls",
+      "Countertop substrate",
+      "Decorative architectural elements",
+      "Test panels for mix ratio experiments",
+      "Garden bed walls"
+    ],
+    "materials": [
+      "foamular-xps",
+      "ar-fiberglass-mesh",
+      "portland-cement",
+      "fine-sand",
+      "sikalatex"
+    ],
+    "tools": [
+      "Mixing bucket",
+      "Margin trowel",
+      "Notched trowel",
+      "Spray bottle (water for curing)",
+      "Utility knife (for foam cutting)"
+    ],
+    "mixes": [
+      {
+        "name": "Base coat mortar",
+        "ratio": "1 part Portland cement : 1.5 parts fine sand",
+        "admixture": "SikaLatex diluted 1:3 as mix water (replaces some water)"
+      },
+      {
+        "name": "Finish coat",
+        "ratio": "1 part Portland cement : 1 part fine sand",
+        "admixture": "Minimal SikaLatex — smoother finish"
+      }
+    ],
+    "steps": [
+      "1. Cut XPS foam to desired panel dimensions.",
+      "2. Score foam surface lightly with utility knife for adhesion.",
+      "3. Apply thin pegapiso bond coat to both faces — let tack.",
+      "4. Press AR fiberglass mesh into bond coat on both faces.",
+      "5. Apply base coat mortar (8–12mm total) over mesh using trowel.",
+      "6. Allow to firm up (2–4 hours), keep damp.",
+      "7. Apply finish coat (4–6mm) for smooth or textured surface.",
+      "8. Damp cure for minimum 7 days — cover with plastic or wet burlap."
+    ],
+    "risks": [
+      "Foam is combustible — must be fully encapsulated. No exposed foam in finished work.",
+      "Thin mortar coats can crack if cured too fast — damp cure is mandatory.",
+      "Ordinary fiberglass cloth ≠ AR mesh — check the mesh rating."
+    ],
+    "safety_notes": [
+      "Non-structural panel. Not for load-bearing, spanning, or inhabited-space structural use.",
+      "Foam releases toxic smoke if ignited — always fully encapsulate."
+    ],
+    "local_substitutions": [
+      "EPS (unicel) can substitute for XPS — less rigid, similar process.",
+      "Diamond mesh can substitute for AR mesh — results in more traditional ferrocement finish."
+    ],
+    "supplier_notes": [
+      "All materials available in Puerto Vallarta — COMEX, local ferreteras.",
+      "AR fiberglass mesh may need to be sourced from SIKA distributor or ordered."
+    ],
+    "estimated_cost_mxn": 800,
+    "expected_lifespan": "20+ years if properly sealed and maintained",
+    "test_status": "field-tested",
+    "related_beads": ["IA-BEAD-0001"]
+  },
+  {
+    "id": "ferrocement-barrel-roof",
+    "title": "Ferrocement Barrel Roof",
+    "summary": "A curved thin-shell ferrocement roof formed over cattle panel or rebar ribs. Creates a self-supporting barrel vault. Requires local engineering review for any inhabited structure.",
+    "category": "ferrocement-shell",
+    "difficulty": "advanced",
+    "use_cases": [
+      "Outdoor structure roofing",
+      "Garden structure covering",
+      "Decorative architectural vaulting",
+      "Experimental shell structures"
+    ],
+    "materials": [
+      "cattle-panel",
+      "diamond-mesh",
+      "ar-fiberglass-mesh",
+      "portland-cement",
+      "fine-sand",
+      "sikalatex"
+    ],
+    "tools": [
+      "Wire cutters",
+      "Binding wire and pliers",
+      "Mortar mixer or large buckets",
+      "Margin trowel and flexible trowel",
+      "Scaffolding or safe work platform",
+      "Spray system for curing"
+    ],
+    "mixes": [
+      {
+        "name": "Ferrocement mortar",
+        "ratio": "1 part Portland cement : 1.5 parts fine sand",
+        "admixture": "SikaLatex 1:3 as partial mix water. Target consistency: thick peanut butter."
+      }
+    ],
+    "steps": [
+      "1. Establish wall plates or beam ledges at correct span and height.",
+      "2. Bend cattle panel to barrel curve — secure ends to wall plates.",
+      "3. Add intermediate ribs if span > 3m.",
+      "4. Layer diamond mesh over cattle panel — secure with binding wire.",
+      "5. Add second mesh layer offset from first.",
+      "6. Optional: add AR fiberglass mesh as third layer.",
+      "7. Apply mortar from underside — work mortar fully through all mesh layers.",
+      "8. Allow underside to firm, then apply top coat.",
+      "9. Total shell thickness: 25–40mm.",
+      "10. Damp cure minimum 14 days. Cover with plastic and wet.",
+      "11. Apply waterproofing membrane to top surface after cure."
+    ],
+    "risks": [
+      "STRUCTURAL — any inhabited space below requires local engineering review.",
+      "Shell thickness must be consistent — thin spots create failure points.",
+      "Barrel end thrust must be properly anchored at wall plates.",
+      "Puerto Vallarta is in a seismic zone — engineering review mandatory for inhabited structures."
+    ],
+    "safety_notes": [
+      "⚠️ ENGINEERING NOTE: This system involves a spanning roof. Any inhabited structure, load-bearing element, spanning roof, or elevated platform must be reviewed by a licensed local engineer and must comply with local building codes.",
+      "Do not use over inhabited spaces without engineering review and permit.",
+      "Scaffold and fall protection required during construction."
+    ],
+    "local_substitutions": [
+      "Rebar ribs can substitute for cattle panel — more labor but locally available.",
+      "Chicken wire (gallinero) can work for small-span experimental structures — not for inhabited use."
+    ],
+    "supplier_notes": [
+      "Cattle panel available from agricultural suppliers.",
+      "Diamond mesh and cement at local ferreteras.",
+      "Waterproofing: SIKA or Sherwin-Williams at COMEX."
+    ],
+    "estimated_cost_mxn": 4500,
+    "expected_lifespan": "30–50 years properly built and maintained",
+    "test_status": "sample-tested",
+    "related_beads": ["IA-BEAD-0001"]
+  },
+  {
+    "id": "xps-kitchen-counter",
+    "title": "XPS Kitchen Counter / Sink Counter",
+    "summary": "A cast-in-place or precast concrete countertop formed over XPS foam substrate with integral undermount sink cavity. Waterproofed and sealed for kitchen and bathroom use.",
+    "category": "foam-composite",
+    "difficulty": "intermediate",
+    "use_cases": [
+      "Kitchen countertops",
+      "Bathroom vanity tops",
+      "Outdoor kitchen surfaces",
+      "Utility counter surfaces"
+    ],
+    "materials": [
+      "foamular-xps",
+      "ar-fiberglass-mesh",
+      "portland-cement",
+      "fine-sand",
+      "sikalatex",
+      "pegapiso"
+    ],
+    "tools": [
+      "Hot wire foam cutter or utility knife",
+      "Mixing bucket",
+      "Trowels (margin and pool trowel)",
+      "Orbital sander + wet-dry sandpaper (80–400 grit)",
+      "Sealer applicator"
+    ],
+    "mixes": [
+      {
+        "name": "Base structural coat",
+        "ratio": "1 part Portland cement : 1 part fine sand",
+        "admixture": "SikaLatex 1:4, fiber reinforcement optional"
+      },
+      {
+        "name": "Finish slurry coat",
+        "ratio": "1 part Portland cement : 0.5 parts fine sand",
+        "admixture": "SikaLatex for workability"
+      }
+    ],
+    "steps": [
+      "1. Cut XPS foam to counter profile, including sink cutout if needed.",
+      "2. Build up thickness with foam layers — target 40–60mm total substrate.",
+      "3. Apply pegapiso bond coat over foam — press AR mesh into it.",
+      "4. Wrap edges with mesh.",
+      "5. Apply base coat mortar — minimum 12mm over mesh.",
+      "6. Cure 48 hours damp.",
+      "7. Apply finish slurry coats — 2–3 thin passes.",
+      "8. Sand progressively (80→120→220→400 wet) after final cure.",
+      "9. Apply penetrating sealer — minimum 3 coats.",
+      "10. Install sink hardware and caulk perimeters."
+    ],
+    "risks": [
+      "Waterproofing is critical — inadequate sealing causes staining and water damage.",
+      "Edge strength — edges must have sufficient cement thickness (minimum 12mm)."
+    ],
+    "safety_notes": [
+      "This is a countertop system — not structural.",
+      "Ensure the supporting cabinet structure can bear the weight of the cement counter."
+    ],
+    "local_substitutions": [
+      "EPS can substitute for XPS core — less precision in cutting.",
+      "Diamond mesh can work in place of AR mesh for non-sink counters."
+    ],
+    "supplier_notes": [
+      "Sealers: COMEX carries penetrating concrete sealers.",
+      "Wet-dry sandpaper available at auto parts stores or ferreteras."
+    ],
+    "estimated_cost_mxn": 1500,
+    "expected_lifespan": "15–25 years with proper sealing maintenance",
+    "test_status": "field-tested",
+    "related_beads": ["IA-BEAD-0001"]
+  },
+  {
+    "id": "raised-bed-system",
+    "title": "Raised Bed System",
+    "summary": "Foam-core cement panel raised garden beds. Lightweight, durable, and insulating for plant roots. Suitable for rooftop and ground-level gardens.",
+    "category": "foam-composite",
+    "difficulty": "beginner",
+    "use_cases": [
+      "Vegetable gardens",
+      "Herb gardens",
+      "Rooftop planters",
+      "Decorative landscape elements"
+    ],
+    "materials": [
+      "foamular-xps",
+      "ar-fiberglass-mesh",
+      "portland-cement",
+      "fine-sand",
+      "sikalatex"
+    ],
+    "tools": [
+      "Utility knife",
+      "Mixing bucket",
+      "Trowel",
+      "Corner angle pieces (optional — for clean corners)"
+    ],
+    "mixes": [
+      {
+        "name": "Panel mortar",
+        "ratio": "1 part Portland cement : 2 parts fine sand",
+        "admixture": "SikaLatex 1:4"
+      }
+    ],
+    "steps": [
+      "1. Cut foam panels to desired bed dimensions.",
+      "2. Apply mesh and mortar to all four panel faces (inside and outside).",
+      "3. Cure panels flat — minimum 7 days damp.",
+      "4. Assemble panels into box form — tie corners with mortar or bracket.",
+      "5. Apply corner fill mortar for sealing.",
+      "6. Final cure assembled bed — wet interior daily for 3 days.",
+      "7. Interior can receive a food-safe waterproof coating if desired."
+    ],
+    "risks": [
+      "Foam exposed on interior edges — must seal against plant moisture for longevity.",
+      "Rooftop use: verify structural capacity before placing heavy planted beds."
+    ],
+    "safety_notes": [
+      "Lightweight system — no engineering review needed for standard ground-level beds.",
+      "Rooftop: verify building structural capacity for wet soil load."
+    ],
+    "local_substitutions": [
+      "EPS (unicel) works as form core — less precise but available everywhere."
+    ],
+    "supplier_notes": [
+      "All materials at COMEX and local ferreteras."
+    ],
+    "estimated_cost_mxn": 600,
+    "expected_lifespan": "10–20 years",
+    "test_status": "field-tested",
+    "related_beads": ["IA-BEAD-0001"]
+  },
+  {
+    "id": "outdoor-kitchen-system",
+    "title": "Outdoor Kitchen System",
+    "summary": "Full outdoor kitchen build using foam-core cement counter, concrete block base, tile finish, and integrated grill/stove area. Non-structural kitchen elements over a masonry base.",
+    "category": "foam-composite",
+    "difficulty": "intermediate",
+    "use_cases": [
+      "Outdoor kitchen counters",
+      "BBQ surround",
+      "Outdoor bar / prep area",
+      "Poolside kitchen"
+    ],
+    "materials": [
+      "foamular-xps",
+      "ar-fiberglass-mesh",
+      "portland-cement",
+      "fine-sand",
+      "sikalatex",
+      "pegapiso"
+    ],
+    "tools": [
+      "Block laying tools",
+      "Mixing equipment",
+      "Tile saw",
+      "Trowels"
+    ],
+    "mixes": [
+      {
+        "name": "Counter top mortar",
+        "ratio": "1 part Portland cement : 1 part fine sand"
+      },
+      {
+        "name": "Masonry mortar (block laying)",
+        "ratio": "1 part Portland cement : 3 parts sand"
+      }
+    ],
+    "steps": [
+      "1. Lay concrete block base for counter height (typically 90cm).",
+      "2. Build out counter depth with blocks.",
+      "3. Cap with foam-core cement counter panel (see xps-kitchen-counter system).",
+      "4. Tile or stucco the block base faces.",
+      "5. Install grill or stove cutout with proper clearance.",
+      "6. Apply waterproofing to all counter surfaces.",
+      "7. Seal and finish."
+    ],
+    "risks": [
+      "Fire clearances around grill — follow appliance manufacturer specifications.",
+      "Moisture management critical in Puerto Vallarta humidity."
+    ],
+    "safety_notes": [
+      "Non-structural countertop — counters do not span or carry loads.",
+      "Gas line connections require licensed plomero/gas technician.",
+      "Grill clearances: minimum 30cm clearance from combustible materials above grill."
+    ],
+    "local_substitutions": [],
+    "supplier_notes": [
+      "Block available from local block manufacturers (block producers in PV are everywhere).",
+      "Tile from tile warehouses on the highway."
+    ],
+    "estimated_cost_mxn": 8000,
+    "expected_lifespan": "20+ years",
+    "test_status": "sample-tested",
+    "related_beads": ["IA-BEAD-0001"]
+  },
+  {
+    "id": "bathroom-shower-form",
+    "title": "Bathroom / Tub / Shower Form",
+    "summary": "Waterproof cement shell shower pan and surround built over foam form. Replaces traditional tile over cement board with a monolithic waterproof foam-cement system.",
+    "category": "foam-composite",
+    "difficulty": "intermediate",
+    "use_cases": [
+      "Shower pans",
+      "Custom shower surrounds",
+      "Soaking tub shells",
+      "Wet room floors"
+    ],
+    "materials": [
+      "foamular-xps",
+      "ar-fiberglass-mesh",
+      "portland-cement",
+      "fine-sand",
+      "sikalatex"
+    ],
+    "tools": [
+      "Hot wire cutter or utility knife",
+      "Trowels",
+      "Level",
+      "Spray bottle or misting system for curing"
+    ],
+    "mixes": [
+      {
+        "name": "Shell mortar",
+        "ratio": "1 part Portland cement : 1 part fine sand",
+        "admixture": "SikaLatex 1:3 — critical for waterproofing"
+      }
+    ],
+    "steps": [
+      "1. Form foam to shower pan shape — create positive slope (1% minimum) to drain.",
+      "2. Coat all foam surfaces with AR mesh + mortar (minimum 12mm).",
+      "3. Form shower walls over foam or over existing structure.",
+      "4. Apply minimum 3 mortar coats total to water-exposed surfaces.",
+      "5. Apply dedicated waterproofing membrane over cured shell.",
+      "6. Test with flood test (plug drain, fill with water 24hr) before tiling.",
+      "7. Tile or leave raw cement finish with penetrating sealer."
+    ],
+    "risks": [
+      "Waterproofing failure leads to structural moisture damage — do NOT skip flood test.",
+      "Slope errors create standing water and mold conditions."
+    ],
+    "safety_notes": [
+      "Shower and wet room surfaces must be fully waterproofed — any breach causes long-term damage.",
+      "Non-structural application — shower surround does not span or carry loads."
+    ],
+    "local_substitutions": [],
+    "supplier_notes": [
+      "Waterproofing: SIKA or Sherwin-Williams waterproof coatings at COMEX."
+    ],
+    "estimated_cost_mxn": 2500,
+    "expected_lifespan": "15–25 years with maintenance",
+    "test_status": "sample-tested",
+    "related_beads": ["IA-BEAD-0001"]
+  },
+  {
+    "id": "material-test-panel-protocol",
+    "title": "Material Test Panel Protocol",
+    "summary": "Standard protocol for casting, curing, and evaluating small test panels before committing to full-scale builds. Essential for calibrating mix ratios, mesh combinations, and surface finishes locally.",
+    "category": "research-protocol",
+    "difficulty": "beginner",
+    "use_cases": [
+      "Mix ratio calibration",
+      "Local material quality testing",
+      "Mesh + mortar compatibility testing",
+      "Surface finish experimentation",
+      "Documentation for the Lab section"
+    ],
+    "materials": [
+      "Any cement mix",
+      "Any mesh type",
+      "Any admixture"
+    ],
+    "tools": [
+      "Flat surface or form board",
+      "Trowel",
+      "Scale for measuring materials",
+      "Notebook / field log"
+    ],
+    "mixes": [],
+    "steps": [
+      "1. Record date, weather conditions, and all material sources and batch numbers.",
+      "2. Prepare a 300mm x 300mm (12\"x12\") test panel form.",
+      "3. Mix test batch per target ratio — record exact ratios.",
+      "4. Apply to form with target technique (trowel, spray, press).",
+      "5. Record thickness at 4 corners.",
+      "6. Cure per test conditions (damp, dry, covered, uncovered — test one variable at a time).",
+      "7. At 7 days: inspect, photograph, record observations.",
+      "8. At 28 days: final inspection, scratch test, bend test if feasible.",
+      "9. Log all results in /data/beads.json linked to lab entry."
+    ],
+    "risks": [
+      "Test panels only — do not use test panels as finished structural elements."
+    ],
+    "safety_notes": [
+      "Test panels help avoid costly failures at full scale — always test first."
+    ],
+    "local_substitutions": [],
+    "supplier_notes": [],
+    "estimated_cost_mxn": 50,
+    "expected_lifespan": "N/A — evaluation specimens",
+    "test_status": "field-tested",
+    "related_beads": ["IA-BEAD-0001"]
+  }
+]

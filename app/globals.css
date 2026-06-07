@@ -1,0 +1,165 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── CSS Custom Properties ──────────────────────────────────────────────── */
+:root {
+  --bg-base: #080806;
+  --bg-surface: #1a1916;
+  --bg-elevated: #252420;
+  --bg-overlay: rgba(8, 8, 6, 0.85);
+  --text-primary: #f2ede8;
+  --text-secondary: #a89f94;
+  --text-muted: #6b6560;
+  --accent-orange: #e85d04;
+  --accent-blue: #4a90d9;
+  --accent-gold: #c5b358;
+  --accent-sage: #6b8f47;
+  --accent-concrete: #8a8278;
+  --border: #2d2c29;
+  --border-subtle: #1f1e1b;
+}
+
+/* ─── Base Reset ─────────────────────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-color: var(--bg-base);
+  color: var(--text-primary);
+  font-family: system-ui, -apple-system, sans-serif;
+  line-height: 1.6;
+}
+
+/* ─── Selection ──────────────────────────────────────────────────────────── */
+::selection {
+  background-color: var(--accent-orange);
+  color: var(--bg-base);
+}
+
+/* ─── Scrollbar ──────────────────────────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-base);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 2px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-concrete);
+}
+
+/* ─── Focus ──────────────────────────────────────────────────────────────── */
+:focus-visible {
+  outline: 1px solid var(--accent-orange);
+  outline-offset: 2px;
+}
+
+/* ─── Typography ─────────────────────────────────────────────────────────── */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--text-primary);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+p {
+  color: var(--text-secondary);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* ─── Utility Classes ────────────────────────────────────────────────────── */
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .glass {
+    background: rgba(26, 25, 22, 0.7);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(45, 44, 41, 0.6);
+  }
+
+  .grain-overlay {
+    position: relative;
+  }
+
+  .grain-overlay::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.05'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .label-text {
+    font-size: 0.6875rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-family: ui-monospace, monospace;
+    color: var(--text-muted);
+  }
+
+  .accent-line {
+    width: 2rem;
+    height: 1px;
+    background-color: var(--accent-orange);
+    display: inline-block;
+  }
+
+  .blueprint-grid {
+    background-image:
+      linear-gradient(rgba(74, 144, 217, 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(74, 144, 217, 0.05) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+}
+
+/* ─── Dashboard Glass Panel ──────────────────────────────────────────────── */
+.dashboard-panel {
+  background: rgba(26, 25, 22, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(45, 44, 41, 0.8);
+  border-radius: 2px;
+}
+
+/* ─── Build System Card Hover ────────────────────────────────────────────── */
+.build-card {
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  border-left: 2px solid transparent;
+}
+
+.build-card:hover {
+  transform: translateY(-2px);
+  border-left-color: var(--accent-orange);
+  background: rgba(26, 25, 22, 0.9);
+}
+
+/* ─── Reduced Motion ─────────────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

@@ -73,5 +73,40 @@
       "Bambu: Add pauli-pi-agent to session scope when ready for live Pi Agent integration.",
       "Bambu: Add DASHBOARD_SECRET, PI_AGENT_BASE_URL, PI_AGENT_API_KEY to Vercel env vars."
     ]
+  },
+  {
+    "id": "IA-BEAD-0003",
+    "parent": "IA-BEAD-0002",
+    "phase": "deployment",
+    "status": "complete",
+    "timestamp": "2026-06-07T04:27:00Z",
+    "summary": "First successful Vercel deployment. All 34 pages compiled, TypeScript clean, static generation complete. Preview live at infinite-architecture-git-claude-infini-73ba30-the-pauli-effect.vercel.app",
+    "decisions": [
+      "Removed three, @react-three/fiber, @react-three/drei, @types/three — peer dep conflict with React 19, not yet used in any rendered component.",
+      "Added vercel.json with installCommand: npm install --legacy-peer-deps to guarantee --legacy-peer-deps regardless of .npmrc parsing.",
+      "Added framework: nextjs to vercel.json — without it, Vercel treated project as static site and looked for public/ output instead of .next."
+    ],
+    "files_touched": [
+      "package.json",
+      "vercel.json",
+      ".npmrc"
+    ],
+    "commands_run": [
+      "git push -u origin claude/infinite-architecture-setup-5zJM0"
+    ],
+    "tests_run": [
+      "Vercel build: 410 packages installed, compiled in 10.2s, 34/34 static pages generated"
+    ],
+    "rollback": "git revert 6136838 86c40c8 — restores Three.js deps and removes vercel.json",
+    "risks": [
+      "DASHBOARD_SECRET not yet set in Vercel env — dashboard routes unprotected until wired",
+      "PI_AGENT_BASE_URL/PI_AGENT_API_KEY not set — Pi Agent runs in local fallback mode only",
+      "Three.js/R3F removed — no 3D scenes until re-added with React 19 compatible version"
+    ],
+    "next_action": "Wire DASHBOARD_SECRET env var in Vercel. Add pauli-pi-agent to session scope for live Pi Agent.",
+    "questions_for_bambu": [
+      "Bambu: Add DASHBOARD_SECRET, PI_AGENT_BASE_URL, PI_AGENT_API_KEY to Vercel project env vars to activate dashboard auth and live Pi Agent.",
+      "Bambu: Ready to mark PR #1 as ready for review and merge?"
+    ]
   }
 ]

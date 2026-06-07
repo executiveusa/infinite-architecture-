@@ -95,7 +95,7 @@ export type SocialQueueItem = z.infer<typeof SocialQueueItemSchema>
 export const BeadSchema = z.object({
   id: z.string(),
   parent: z.string().nullable(),
-  phase: z.enum(['discovery', 'architecture', 'backend', 'ui', 'dashboard', 'editorial', 'automation', 'testing', 'review', 'merge']),
+  phase: z.enum(['discovery', 'architecture', 'deployment', 'backend', 'ui', 'dashboard', 'editorial', 'automation', 'testing', 'review', 'merge']),
   status: z.enum(['planned', 'active', 'blocked', 'complete', 'failed']),
   timestamp: z.string(),
   summary: z.string(),

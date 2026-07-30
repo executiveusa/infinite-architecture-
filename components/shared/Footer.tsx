@@ -1,40 +1,58 @@
 import Link from 'next/link'
+import { ArrowUpRight } from 'lucide-react'
+
+const PRIMARY_LINKS = [
+  ['Studio', '/#studio'],
+  ['Projects', '/#projects'],
+  ['Build Types', '/#build-types'],
+  ['Field Notes', '/field-notes'],
+  ['Start a Concept', '/#start'],
+]
+
+const RESEARCH_LINKS = [
+  ['Build Systems', '/build-systems'],
+  ['Materials', '/materials'],
+  ['Guides', '/guides'],
+  ['Lab', '/lab'],
+  ['Safety Canon', '/safety'],
+]
 
 export default function Footer() {
   const year = new Date().getFullYear()
 
   return (
-    <footer className="border-t border-ia-border bg-bg-base">
-      <div className="max-w-screen-xl mx-auto px-6 md:px-12 lg:px-16 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
-          {/* Brand */}
-          <div className="md:col-span-1">
-            <div className="flex flex-col leading-none mb-4">
-              <span className="label-text text-ia-muted">INFINITE</span>
-              <span className="text-sm font-bold tracking-widest text-ia-text uppercase">ARCHITECTURE</span>
-            </div>
-            <p className="text-xs text-ia-muted leading-relaxed">
-              Free construction knowledge.
-              Open-source build systems.
-              Puerto Vallarta, Jalisco, México.
+    <footer className="border-t border-white/10 bg-ia-cave text-ia-paper">
+      <div className="mx-auto max-w-[1540px] px-5 py-16 sm:px-8 md:px-12 md:py-24 lg:px-16 xl:px-24">
+        <div className="grid gap-14 lg:grid-cols-[1.2fr_.8fr_.8fr]">
+          <div>
+            <p className="text-[0.62rem] font-medium uppercase tracking-[0.22em] text-ia-paper/[0.45]">
+              Infinite Architecture
             </p>
+            <p className="mt-6 max-w-[15ch] font-editorial text-[clamp(2.5rem,5vw,5.6rem)] leading-[0.94]">
+              Biophilic concepts and coordinated project delivery in Puerto Vallarta.
+            </p>
+            <Link
+              href="/#start"
+              className="group mt-8 inline-flex items-center gap-3 border-b border-ia-paper/[0.70] pb-1 text-sm font-medium"
+            >
+              Start a concept
+              <ArrowUpRight
+                size={16}
+                className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+              />
+            </Link>
           </div>
 
-          {/* Knowledge */}
           <div>
-            <p className="label-text text-ia-muted mb-4">KNOWLEDGE</p>
-            <nav className="flex flex-col gap-2">
-              {[
-                ['Build Systems', '/build-systems'],
-                ['Materials', '/materials'],
-                ['Guides', '/guides'],
-                ['Field Notes', '/field-notes'],
-                ['Lab', '/lab'],
-              ].map(([label, href]) => (
+            <p className="text-[0.62rem] font-medium uppercase tracking-[0.18em] text-ia-paper/[0.45]">
+              Studio
+            </p>
+            <nav className="mt-6 flex flex-col gap-3" aria-label="Studio links">
+              {PRIMARY_LINKS.map(([label, href]) => (
                 <Link
                   key={href}
                   href={href}
-                  className="text-xs text-ia-secondary hover:text-ia-text transition-colors"
+                  className="text-sm text-ia-paper/[0.68] transition-colors hover:text-ia-paper"
                 >
                   {label}
                 </Link>
@@ -42,50 +60,34 @@ export default function Footer() {
             </nav>
           </div>
 
-          {/* Build Systems */}
           <div>
-            <p className="label-text text-ia-muted mb-4">BUILD SYSTEMS</p>
-            <nav className="flex flex-col gap-2">
-              {[
-                'Foam-Core Cement Panel',
-                'Ferrocement Barrel Roof',
-                'XPS Kitchen Counter',
-                'Raised Bed System',
-                'Outdoor Kitchen',
-                'Bathroom / Shower Form',
-              ].map((name) => (
-                <span key={name} className="text-xs text-ia-muted">
-                  {name}
-                </span>
+            <p className="text-[0.62rem] font-medium uppercase tracking-[0.18em] text-ia-paper/[0.45]">
+              Public knowledge
+            </p>
+            <nav className="mt-6 flex flex-col gap-3" aria-label="Research links">
+              {RESEARCH_LINKS.map(([label, href]) => (
+                <Link
+                  key={href}
+                  href={href}
+                  className="text-sm text-ia-paper/[0.68] transition-colors hover:text-ia-paper"
+                >
+                  {label}
+                </Link>
               ))}
-            </nav>
-          </div>
-
-          {/* Safety */}
-          <div>
-            <p className="label-text text-ia-muted mb-4">IMPORTANT</p>
-            <nav className="flex flex-col gap-2">
-              <Link
-                href="/safety"
-                className="text-xs text-ia-orange hover:text-ia-text transition-colors"
-              >
-                Safety Canon
-              </Link>
-              <p className="text-xs text-ia-muted leading-relaxed mt-2">
-                Infinite Architecture provides free construction knowledge — not engineering certification.
-                Always obtain local permits and engineering review for structural and inhabited-space work.
-              </p>
             </nav>
           </div>
         </div>
 
-        <div className="mt-16 pt-8 border-t border-ia-border-subtle flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
-          <p className="label-text text-ia-muted">
-            © {year} INFINITE ARCHITECTURE — FREE & OPEN SOURCE
+        <div className="mt-16 grid gap-8 border-t border-white/[0.12] pt-8 text-xs leading-relaxed text-ia-paper/[0.48] md:grid-cols-[1fr_auto] md:items-end">
+          <p className="max-w-3xl">
+            Infinite Architecture provides concept design, visualization, planning, procurement
+            support, and project coordination. Licensed architecture, engineering, permitting,
+            regulated trades, and construction sign-off remain with qualified local professionals.
           </p>
-          <p className="label-text text-ia-muted">
-            PUERTO VALLARTA, JALISCO, MÉXICO
-          </p>
+          <div className="md:text-right">
+            <p>© {year} Infinite Architecture</p>
+            <p className="mt-1">Puerto Vallarta, Jalisco, México</p>
+          </div>
         </div>
       </div>
     </footer>

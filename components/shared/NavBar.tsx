@@ -2,16 +2,15 @@
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { useState, useEffect } from 'react'
-import { Menu, X } from 'lucide-react'
+import { useEffect, useState } from 'react'
+import { ArrowUpRight, Menu, X } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
 const NAV_LINKS = [
-  { href: '/build-systems', label: 'Build Systems' },
+  { href: '/#studio', label: 'Studio' },
+  { href: '/#projects', label: 'Projects' },
+  { href: '/#build-types', label: 'Build Types' },
   { href: '/field-notes', label: 'Field Notes' },
-  { href: '/materials', label: 'Materials' },
-  { href: '/guides', label: 'Guides' },
-  { href: '/lab', label: 'Lab' },
 ]
 
 export default function NavBar() {
@@ -20,47 +19,55 @@ export default function NavBar() {
   const [open, setOpen] = useState(false)
 
   useEffect(() => {
-    const handler = () => setScrolled(window.scrollY > 40)
+    const handler = () => setScrolled(window.scrollY > 36)
+    handler()
     window.addEventListener('scroll', handler, { passive: true })
     return () => window.removeEventListener('scroll', handler)
   }, [])
 
-  const isDashboard = pathname.startsWith('/dashboard')
+  useEffect(() => {
+    setOpen(false)
+  }, [pathname])
 
-  if (isDashboard) return null
+  if (pathname.startsWith('/dashboard')) return null
+
+  const isHome = pathname === '/'
+  const editorialState = isHome && !scrolled
 
   return (
     <header
       className={cn(
-        'fixed top-0 left-0 right-0 z-50 transition-all duration-500',
-        scrolled
-          ? 'glass border-b border-ia-border py-3'
-          : 'bg-transparent py-6'
+        'fixed inset-x-0 top-0 z-50 border-b transition-all duration-500',
+        editorialState
+          ? 'border-transparent bg-transparent py-5 text-ia-paper'
+          : isHome
+            ? 'border-ia-line bg-ia-paper/[0.92] py-3 text-ia-ink backdrop-blur-xl'
+            : 'border-ia-border bg-bg-base/[0.88] py-3 text-ia-text backdrop-blur-xl'
       )}
     >
-      <div className="max-w-screen-xl mx-auto px-6 md:px-12 lg:px-16 flex items-center justify-between">
-        {/* Logo */}
-        <Link
-          href="/"
-          className="flex flex-col leading-none group"
-        >
-          <span className="text-[0.6rem] label-text group-hover:text-ia-orange transition-colors">
-            INFINITE
+      <div className="mx-auto flex max-w-[1540px] items-center justify-between px-5 sm:px-8 md:px-12 lg:px-16 xl:px-24">
+        <Link href="/" className="group flex flex-col leading-none" aria-label="Infinite Architecture home">
+          <span
+            className={cn(
+              'text-[0.58rem] font-medium uppercase tracking-[0.22em] transition-opacity',
+              editorialState ? 'text-ia-paper/[0.70]' : isHome ? 'text-ia-ink/[0.52]' : 'text-ia-muted'
+            )}
+          >
+            Infinite
           </span>
-          <span className="text-sm font-bold tracking-widest text-ia-text uppercase">
-            ARCHITECTURE
+          <span className="mt-1 font-display text-[1.05rem] uppercase tracking-[0.02em]">
+            Architecture
           </span>
         </Link>
 
-        {/* Desktop nav */}
-        <nav className="hidden md:flex items-center gap-8">
+        <nav className="hidden items-center gap-7 lg:flex" aria-label="Primary navigation">
           {NAV_LINKS.map(({ href, label }) => (
             <Link
               key={href}
               href={href}
               className={cn(
-                'label-text hover:text-ia-text transition-colors duration-200',
-                pathname === href ? 'text-ia-text' : ''
+                'text-[0.7rem] font-medium uppercase tracking-[0.14em] transition-opacity hover:opacity-55',
+                !isHome && pathname === href ? 'opacity-100' : 'opacity-80'
               )}
             >
               {label}
@@ -68,46 +75,67 @@ export default function NavBar() {
           ))}
         </nav>
 
-        {/* Dashboard link */}
-        <div className="hidden md:flex items-center gap-4">
+        <div className="hidden items-center gap-4 lg:flex">
           <Link
-            href="/dashboard"
-            className="label-text border border-ia-border px-3 py-1.5 hover:border-ia-orange hover:text-ia-orange transition-all duration-200"
+            href="/#start"
+            className={cn(
+              'group inline-flex min-h-10 items-center gap-2 border px-4 py-2 text-[0.7rem] font-medium uppercase tracking-[0.12em] transition-colors',
+              editorialState
+                ? 'border-white/[0.55] text-ia-paper hover:bg-white hover:text-ia-ink'
+                : isHome
+                  ? 'border-ia-ink bg-ia-ink text-ia-paper hover:bg-ia-leaf'
+                  : 'border-ia-border text-ia-text hover:border-ia-orange hover:text-ia-orange'
+            )}
           >
-            DASHBOARD
+            Start a concept
+            <ArrowUpRight size={14} className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
           </Link>
         </div>
 
-        {/* Mobile menu toggle */}
         <button
-          className="md:hidden text-ia-secondary hover:text-ia-text transition-colors"
-          onClick={() => setOpen(!open)}
-          aria-label="Toggle menu"
+          type="button"
+          className="inline-flex min-h-11 min-w-11 items-center justify-center lg:hidden"
+          onClick={() => setOpen((value) => !value)}
+          aria-expanded={open}
+          aria-controls="mobile-navigation"
+          aria-label={open ? 'Close menu' : 'Open menu'}
         >
-          {open ? <X size={20} /> : <Menu size={20} />}
+          {open ? <X size={22} /> : <Menu size={22} />}
         </button>
       </div>
 
-      {/* Mobile menu */}
       {open && (
-        <div className="md:hidden glass border-t border-ia-border mt-3">
-          <nav className="max-w-screen-xl mx-auto px-6 py-6 flex flex-col gap-5">
+        <div
+          id="mobile-navigation"
+          className={cn(
+            'mt-3 border-t px-5 py-6 sm:px-8',
+            isHome ? 'border-ia-line bg-ia-paper text-ia-ink' : 'border-ia-border bg-bg-base text-ia-text'
+          )}
+        >
+          <nav className="mx-auto flex max-w-[1540px] flex-col" aria-label="Mobile navigation">
             {NAV_LINKS.map(({ href, label }) => (
               <Link
                 key={href}
                 href={href}
-                className="label-text hover:text-ia-text transition-colors"
+                className={cn(
+                  'border-b py-4 font-editorial text-3xl',
+                  isHome ? 'border-ia-line' : 'border-ia-border-subtle'
+                )}
                 onClick={() => setOpen(false)}
               >
                 {label}
               </Link>
             ))}
             <Link
-              href="/dashboard"
-              className="label-text border border-ia-border px-3 py-2 hover:border-ia-orange hover:text-ia-orange transition-all w-fit"
+              href="/#start"
+              className={cn(
+                'mt-6 inline-flex min-h-12 items-center justify-center gap-3 px-5 py-3 text-sm font-medium',
+                isHome ? 'bg-ia-ink text-ia-paper' : 'bg-ia-orange text-bg-base'
+              )}
               onClick={() => setOpen(false)}
             >
-              DASHBOARD
+              Start a concept
+              <ArrowUpRight size={17} />
             </Link>
           </nav>
         </div>

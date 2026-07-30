@@ -1,9 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500;6..96,600&family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* ─── CSS Custom Properties ──────────────────────────────────────────────── */
 :root {
+  /* Existing technical field mode */
   --bg-base: #080806;
   --bg-surface: #1a1916;
   --bg-elevated: #252420;
@@ -18,10 +20,29 @@
   --accent-concrete: #8a8278;
   --border: #2d2c29;
   --border-subtle: #1f1e1b;
+
+  /* Public editorial mode */
+  --ia-cream: #f2eee5;
+  --ia-paper: #faf8f2;
+  --ia-ink: #11110e;
+  --ia-cave: #1a1915;
+  --ia-leaf: #23362a;
+  --ia-moss: #6f7f61;
+  --ia-earth: #9a754e;
+  --ia-plaster: #d7c49b;
+  --ia-water: #afc8c5;
+  --ia-mist: #dde3db;
+  --ia-line: rgba(17, 17, 14, 0.16);
+
+  --font-display: 'Bodoni Moda', 'Times New Roman', serif;
+  --font-editorial: 'Instrument Serif', Georgia, serif;
+  --font-sans: Inter, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 }
 
-/* ─── Base Reset ─────────────────────────────────────────────────────────── */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
@@ -32,22 +53,26 @@ html {
 }
 
 body {
+  margin: 0;
+  overflow-x: hidden;
   background-color: var(--bg-base);
   color: var(--text-primary);
-  font-family: system-ui, -apple-system, sans-serif;
+  font-family: var(--font-sans);
   line-height: 1.6;
 }
 
-/* ─── Selection ──────────────────────────────────────────────────────────── */
-::selection {
-  background-color: var(--accent-orange);
-  color: var(--bg-base);
+[id] {
+  scroll-margin-top: 5.5rem;
 }
 
-/* ─── Scrollbar ──────────────────────────────────────────────────────────── */
+::selection {
+  background-color: var(--ia-leaf);
+  color: var(--ia-paper);
+}
+
 ::-webkit-scrollbar {
-  width: 4px;
-  height: 4px;
+  width: 5px;
+  height: 5px;
 }
 
 ::-webkit-scrollbar-track {
@@ -55,29 +80,26 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--border);
   border-radius: 2px;
-}
-
-::-webkit-scrollbar-thumb:hover {
   background: var(--accent-concrete);
 }
 
-/* ─── Focus ──────────────────────────────────────────────────────────────── */
 :focus-visible {
-  outline: 1px solid var(--accent-orange);
-  outline-offset: 2px;
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
 }
 
-/* ─── Typography ─────────────────────────────────────────────────────────── */
-h1, h2, h3, h4, h5, h6 {
-  color: var(--text-primary);
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   line-height: 1.1;
-  letter-spacing: -0.02em;
 }
 
 p {
-  color: var(--text-secondary);
+  margin: 0;
 }
 
 a {
@@ -85,17 +107,32 @@ a {
   text-decoration: none;
 }
 
-/* ─── Utility Classes ────────────────────────────────────────────────────── */
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+select option {
+  background: var(--ia-paper);
+  color: var(--ia-ink);
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
 
+  .text-pretty {
+    text-wrap: pretty;
+  }
+
   .glass {
+    border: 1px solid rgba(45, 44, 41, 0.6);
     background: rgba(26, 25, 22, 0.7);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(45, 44, 41, 0.6);
   }
 
   .grain-overlay {
@@ -103,27 +140,27 @@ a {
   }
 
   .grain-overlay::after {
-    content: '';
     position: absolute;
-    inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.05'/%3E%3C/svg%3E");
-    pointer-events: none;
     z-index: 1;
+    inset: 0;
+    content: '';
+    pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.05'/%3E%3C/svg%3E");
   }
 
   .label-text {
+    color: var(--text-muted);
+    font-family: var(--font-mono);
     font-size: 0.6875rem;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    font-family: ui-monospace, monospace;
-    color: var(--text-muted);
   }
 
   .accent-line {
+    display: inline-block;
     width: 2rem;
     height: 1px;
     background-color: var(--accent-orange);
-    display: inline-block;
   }
 
   .blueprint-grid {
@@ -134,32 +171,93 @@ a {
   }
 }
 
-/* ─── Dashboard Glass Panel ──────────────────────────────────────────────── */
+.ia-home {
+  font-family: var(--font-sans);
+}
+
+.ia-home h1,
+.ia-home h2,
+.ia-home h3,
+.ia-home p {
+  color: inherit;
+}
+
+.ia-hero-image {
+  animation: ia-hero-reveal 1.25s cubic-bezier(0.22, 1, 0.36, 1) both;
+  will-change: clip-path, transform, opacity;
+}
+
+.ia-hero-image::after {
+  position: absolute;
+  inset: 0;
+  content: '';
+  pointer-events: none;
+  background-image: linear-gradient(115deg, rgba(255, 255, 255, 0.04), transparent 35%);
+}
+
+.ia-form-label {
+  color: rgba(17, 17, 14, 0.56);
+  font-size: 0.67rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
 .dashboard-panel {
+  border: 1px solid rgba(45, 44, 41, 0.8);
+  border-radius: 2px;
   background: rgba(26, 25, 22, 0.7);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(45, 44, 41, 0.8);
-  border-radius: 2px;
 }
 
-/* ─── Build System Card Hover ────────────────────────────────────────────── */
 .build-card {
-  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   border-left: 2px solid transparent;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .build-card:hover {
-  transform: translateY(-2px);
   border-left-color: var(--accent-orange);
   background: rgba(26, 25, 22, 0.9);
+  transform: translateY(-2px);
 }
 
-/* ─── Reduced Motion ─────────────────────────────────────────────────────── */
+@keyframes ia-hero-reveal {
+  0% {
+    opacity: 0.2;
+    clip-path: inset(0 0 100% 0);
+    transform: scale(1.08);
+  }
+  100% {
+    opacity: 1;
+    clip-path: inset(0 0 0 0);
+    transform: scale(1);
+  }
+}
+
+@media (max-width: 767px) {
+  .ia-hero-image {
+    background-position: 61% center !important;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
     transition-duration: 0.01ms !important;
+  }
+
+  .ia-hero-image {
+    clip-path: none;
+    opacity: 1;
+    transform: none;
   }
 }

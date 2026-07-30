@@ -5,31 +5,34 @@ import Footer from '@/components/shared/Footer'
 
 export const metadata: Metadata = {
   title: {
-    default: 'Infinite Architecture',
+    default: 'Infinite Architecture — Biophilic Design & Project Coordination',
     template: '%s — Infinite Architecture',
   },
   description:
-    'Free open-source construction knowledge for foam, ferrocement, thin-shell concrete, and climate-aware DIY infrastructure. Puerto Vallarta material laboratory.',
+    'Biophilic concept design, 3D visualization, and coordinated project delivery for Airbnbs, glamping retreats, off-grid properties, landowners, and real-estate teams in Puerto Vallarta.',
   keywords: [
-    'ferrocement',
-    'foam construction',
-    'XPS panels',
-    'thin shell concrete',
-    'barrel roof',
-    'DIY construction',
-    'Puerto Vallarta',
-    'low cost building',
-    'architecture',
+    'biophilic design Puerto Vallarta',
+    'Airbnb design Puerto Vallarta',
+    'glamping design Mexico',
+    'off-grid design',
+    '3D real estate visualization',
+    'project coordination Puerto Vallarta',
+    'dome design',
+    'natural building',
+    'climate-responsive architecture',
   ],
   openGraph: {
     type: 'website',
     siteName: 'Infinite Architecture',
-    title: 'Infinite Architecture',
-    description: 'Free construction knowledge. Open-source build systems. Puerto Vallarta material laboratory.',
+    title: 'Infinite Architecture — Build Places People Remember',
+    description:
+      'Biophilic concepts, 3D visualization, and coordinated delivery for Airbnbs, glamping retreats, and off-grid living.',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Infinite Architecture',
+    title: 'Infinite Architecture — Build Places People Remember',
+    description:
+      'Biophilic concepts and coordinated project delivery in Puerto Vallarta.',
   },
   robots: {
     index: true,
@@ -39,12 +42,12 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: {
+}: Readonly<{
   children: React.ReactNode
-}) {
+}>) {
   return (
     <html lang="en">
-      <body className="bg-bg-base text-ia-text antialiased">
+      <body className="bg-bg-base font-sans text-ia-text antialiased">
         <NavBar />
         <main>{children}</main>
         <Footer />

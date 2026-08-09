@@ -12,7 +12,10 @@ The public site must generate qualified project inquiries. The private Pi Agent 
 
 The current revenue offer is:
 
-> Site and concept audit → biophilic concept package → coordinated build package → ongoing property evolution.
+> Site-to-Stay Opportunity Scan → biophilic concept sprint → owner-side coordination → ongoing property evolution.
+
+The Opportunity Scan is a bounded commercial review, not engineering, permit approval, appraisal,
+lender-grade feasibility, architectural certification, or construction documentation.
 
 Do not add unrelated software products before the public offer, inquiry path, and proof portfolio work.
 
@@ -46,9 +49,9 @@ Structural, permit, electrical, plumbing, fire, accessibility, geotechnical, and
 9. Merge to `main`.
 10. Verify production and retain rollback SHA.
 
-Current redesign branch:
+Current commercial slice branch:
 
-`feature/awwwards-biophilic-resize`
+`agent/site-to-stay-slice`
 
 Never merge a builder's own work without an independent review.
 

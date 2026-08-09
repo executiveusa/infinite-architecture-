@@ -9,6 +9,7 @@ import { cn } from "@/lib/utils";
 const NAV_LINKS = [
   { href: "/#studio", label: "Studio" },
   { href: "/#offer", label: "The Scan" },
+  { href: "/portfolio", label: "Portfolio" },
   { href: "/#systems", label: "Living Systems" },
   { href: "/field-notes", label: "Field Notes" },
 ];
@@ -32,6 +33,11 @@ export default function NavBar() {
   if (pathname.startsWith("/dashboard")) return null;
 
   const isHome = pathname === "/";
+  const isEditorial =
+    isHome ||
+    pathname.startsWith("/portfolio") ||
+    pathname === "/field-notes" ||
+    pathname === "/privacy";
   const editorialState = isHome && !scrolled;
 
   return (
@@ -40,7 +46,7 @@ export default function NavBar() {
         "fixed inset-x-0 top-0 z-50 border-b transition-all duration-500",
         editorialState
           ? "border-transparent bg-transparent py-5 text-ia-paper"
-          : isHome
+          : isEditorial
             ? "border-ia-line bg-ia-paper/[0.92] py-3 text-ia-ink backdrop-blur-xl"
             : "border-ia-border bg-bg-base/[0.88] py-3 text-ia-text backdrop-blur-xl",
       )}
@@ -56,7 +62,7 @@ export default function NavBar() {
               "text-[0.58rem] font-medium uppercase tracking-[0.22em] transition-opacity",
               editorialState
                 ? "text-ia-paper/[0.70]"
-                : isHome
+                : isEditorial
                   ? "text-ia-ink/[0.52]"
                   : "text-ia-muted",
             )}
@@ -93,7 +99,7 @@ export default function NavBar() {
               "group inline-flex min-h-10 items-center gap-2 border px-4 py-2 text-[0.7rem] font-medium uppercase tracking-[0.12em] transition-colors",
               editorialState
                 ? "border-white/[0.55] text-ia-paper hover:bg-white hover:text-ia-ink"
-                : isHome
+                : isEditorial
                   ? "border-ia-ink bg-ia-ink text-ia-paper hover:bg-ia-leaf"
                   : "border-ia-border text-ia-text hover:border-ia-orange hover:text-ia-orange",
             )}
@@ -123,7 +129,7 @@ export default function NavBar() {
           id="mobile-navigation"
           className={cn(
             "mt-3 border-t px-5 py-6 sm:px-8",
-            isHome
+            isEditorial
               ? "border-ia-line bg-ia-paper text-ia-ink"
               : "border-ia-border bg-bg-base text-ia-text",
           )}
@@ -138,7 +144,7 @@ export default function NavBar() {
                 href={href}
                 className={cn(
                   "border-b py-4 font-editorial text-3xl",
-                  isHome ? "border-ia-line" : "border-ia-border-subtle",
+                  isEditorial ? "border-ia-line" : "border-ia-border-subtle",
                 )}
                 onClick={() => setOpen(false)}
               >
@@ -149,7 +155,7 @@ export default function NavBar() {
               href="/#request-scan"
               className={cn(
                 "mt-6 inline-flex min-h-12 items-center justify-center gap-3 px-5 py-3 text-sm font-medium",
-                isHome
+                isEditorial
                   ? "bg-ia-ink text-ia-paper"
                   : "bg-ia-orange text-bg-base",
               )}

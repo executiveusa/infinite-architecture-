@@ -4,6 +4,7 @@ import { ArrowUpRight } from "lucide-react";
 const PRIMARY_LINKS = [
   ["Studio", "/#studio"],
   ["Site-to-Stay Scan", "/#offer"],
+  ["Concept Portfolio", "/portfolio"],
   ["Living Systems", "/#systems"],
   ["Field Notes", "/field-notes"],
   ["Request a Scan", "/#request-scan"],

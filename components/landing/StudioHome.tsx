@@ -1,9 +1,28 @@
-import Image from "next/image";
+import { getImageProps } from "next/image";
 import Link from "next/link";
 import { ArrowRight, ArrowUpRight, Check, MapPin } from "lucide-react";
 import ProjectIntake from "./ProjectIntake";
 
-const HERO_IMAGE = "https://www.nakam.info/content/uploads/2019/07/9-9.jpg";
+const HERO_IMAGE = "/images/concepts/hero-banderas-bay.webp";
+const HERO_IMAGE_MOBILE = "/images/concepts/hero-banderas-bay-mobile.webp";
+
+const { props: desktopHeroProps } = getImageProps({
+  src: HERO_IMAGE,
+  alt: "AI-generated concept of a tropical off-grid property overlooking Banderas Bay",
+  width: 1823,
+  height: 863,
+  quality: 85,
+  sizes: "100vw",
+});
+
+const { props: mobileHeroProps } = getImageProps({
+  src: HERO_IMAGE_MOBILE,
+  alt: "",
+  width: 941,
+  height: 1672,
+  quality: 85,
+  sizes: "100vw",
+});
 
 const SCAN_DELIVERABLES = [
   "Property and hospitality opportunity review",
@@ -39,14 +58,16 @@ export default function StudioHome() {
         id="studio"
         className="relative min-h-[100dvh] bg-ia-cave text-ia-paper"
       >
-        <Image
-          src={HERO_IMAGE}
-          alt="Curved biophilic house surrounded by a dense forest"
-          fill
-          priority
-          sizes="100vw"
-          className="ia-hero-image object-cover object-[61%_center] md:object-[center_54%]"
-        />
+        <picture>
+          <source media="(max-width: 767px)" srcSet={mobileHeroProps.srcSet} />
+          <source media="(min-width: 768px)" srcSet={desktopHeroProps.srcSet} />
+          <img
+            {...desktopHeroProps}
+            alt="AI-generated concept of a tropical off-grid property overlooking Banderas Bay"
+            fetchPriority="high"
+            className="ia-hero-image absolute inset-0 h-full w-full object-cover object-center"
+          />
+        </picture>
         <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(7,12,8,.24)_0%,rgba(7,12,8,.14)_28%,rgba(7,12,8,.88)_100%)]" />
 
         <div className="relative z-10 flex min-h-[100dvh] flex-col justify-end px-5 pb-8 pt-28 sm:px-8 md:px-12 md:pb-12 lg:px-16 xl:px-24">
@@ -83,10 +104,76 @@ export default function StudioHome() {
           </div>
         </div>
 
-        <p className="absolute right-5 top-28 z-10 hidden max-w-[13rem] border-l border-white/35 pl-4 text-xs leading-relaxed text-white/70 lg:block">
-          Reference image: Hiroshi Nakamura &amp; NAP. Not an Infinite
-          Architecture project.
+        <p className="absolute right-5 top-24 z-10 max-w-[12rem] border-l border-white/35 pl-3 text-[0.6rem] leading-relaxed text-white/75 sm:top-28 sm:max-w-[14rem] sm:pl-4 sm:text-xs">
+          AI-generated Infinite Architecture concept study. Not a built project.
         </p>
+      </section>
+
+      <section className="bg-ia-paper px-5 py-24 sm:px-8 md:px-12 md:py-36 lg:px-16 xl:px-24">
+        <div className="mx-auto max-w-[1540px]">
+          <div className="grid gap-8 border-b border-ia-line pb-8 lg:grid-cols-[.7fr_1.3fr] lg:items-end">
+            <p className="text-[0.68rem] font-medium uppercase tracking-[0.18em] text-ia-ink/55">
+              Interactive concept portfolio
+            </p>
+            <div className="flex flex-col gap-7 md:flex-row md:items-end md:justify-between">
+              <h2 className="max-w-[11ch] font-display text-[clamp(3.3rem,7vw,7.5rem)] font-normal uppercase leading-[0.85] tracking-[-0.045em]">
+                See every system working together.
+              </h2>
+              <Link
+                href="/portfolio"
+                className="group inline-flex shrink-0 items-center gap-3 text-sm font-medium"
+              >
+                Explore three concepts{" "}
+                <ArrowRight
+                  size={16}
+                  className="transition-transform group-hover:translate-x-1"
+                />
+              </Link>
+            </div>
+          </div>
+          <div className="mt-9 grid gap-4 md:grid-cols-3">
+            {[
+              [
+                "01",
+                "Casa Semilla",
+                "Start small and expand after demand is proven.",
+                "/portfolio/casa-semilla",
+              ],
+              [
+                "02",
+                "Agua Alta",
+                "Organize a hillside stay around shade, water and slope.",
+                "/portfolio/agua-alta",
+              ],
+              [
+                "03",
+                "Bosque Vivo",
+                "Share infrastructure across a nature-stay cluster.",
+                "/portfolio/bosque-vivo",
+              ],
+            ].map(([number, title, body, href]) => (
+              <Link
+                key={title}
+                href={href}
+                className="group border-t border-ia-line py-5 md:min-h-56"
+              >
+                <p className="text-xs tracking-[0.16em] text-ia-ink/40">
+                  {number}
+                </p>
+                <h3 className="mt-6 font-editorial text-[clamp(2.2rem,4vw,4.2rem)] leading-none">
+                  {title}
+                </h3>
+                <p className="mt-5 max-w-sm text-sm leading-relaxed text-ia-ink/62">
+                  {body}
+                </p>
+                <ArrowUpRight
+                  size={18}
+                  className="mt-7 transition-transform group-hover:-translate-y-1 group-hover:translate-x-1"
+                />
+              </Link>
+            ))}
+          </div>
+        </div>
       </section>
 
       <section className="bg-ia-paper px-5 py-24 sm:px-8 md:px-12 md:py-36 lg:px-16 xl:px-24">

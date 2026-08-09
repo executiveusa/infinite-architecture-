@@ -9,6 +9,7 @@ import { cn } from "@/lib/utils";
 const NAV_LINKS = [
   { href: "/#studio", label: "Studio" },
   { href: "/#offer", label: "The Scan" },
+  { href: "/portfolio", label: "Portfolio" },
   { href: "/#systems", label: "Living Systems" },
   { href: "/field-notes", label: "Field Notes" },
 ];
@@ -42,7 +43,7 @@ export default function NavBar() {
           ? "border-transparent bg-transparent py-5 text-ia-paper"
           : isHome
             ? "border-ia-line bg-ia-paper/[0.92] py-3 text-ia-ink backdrop-blur-xl"
-            : "border-ia-border bg-bg-base/[0.88] py-3 text-ia-text backdrop-blur-xl",
+            : "border-ia-line bg-ia-paper/[0.92] py-3 text-ia-ink backdrop-blur-xl",
       )}
     >
       <div className="mx-auto flex max-w-[1540px] items-center justify-between px-5 sm:px-8 md:px-12 lg:px-16 xl:px-24">
@@ -58,7 +59,7 @@ export default function NavBar() {
                 ? "text-ia-paper/[0.70]"
                 : isHome
                   ? "text-ia-ink/[0.52]"
-                  : "text-ia-muted",
+                  : "text-ia-ink/[0.52]",
             )}
           >
             Infinite
@@ -95,7 +96,7 @@ export default function NavBar() {
                 ? "border-white/[0.55] text-ia-paper hover:bg-white hover:text-ia-ink"
                 : isHome
                   ? "border-ia-ink bg-ia-ink text-ia-paper hover:bg-ia-leaf"
-                  : "border-ia-border text-ia-text hover:border-ia-orange hover:text-ia-orange",
+                  : "border-ia-ink bg-ia-ink text-ia-paper hover:bg-ia-leaf",
             )}
           >
             Request a scan
@@ -125,7 +126,7 @@ export default function NavBar() {
             "mt-3 border-t px-5 py-6 sm:px-8",
             isHome
               ? "border-ia-line bg-ia-paper text-ia-ink"
-              : "border-ia-border bg-bg-base text-ia-text",
+              : "border-ia-line bg-ia-paper text-ia-ink",
           )}
         >
           <nav
@@ -138,7 +139,7 @@ export default function NavBar() {
                 href={href}
                 className={cn(
                   "border-b py-4 font-editorial text-3xl",
-                  isHome ? "border-ia-line" : "border-ia-border-subtle",
+                  "border-ia-line",
                 )}
                 onClick={() => setOpen(false)}
               >
@@ -149,9 +150,7 @@ export default function NavBar() {
               href="/#request-scan"
               className={cn(
                 "mt-6 inline-flex min-h-12 items-center justify-center gap-3 px-5 py-3 text-sm font-medium",
-                isHome
-                  ? "bg-ia-ink text-ia-paper"
-                  : "bg-ia-orange text-bg-base",
+                isHome ? "bg-ia-ink text-ia-paper" : "bg-ia-ink text-ia-paper",
               )}
               onClick={() => setOpen(false)}
             >

@@ -1,21 +1,49 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { Info, X } from "lucide-react";
 import type { Concept, Hotspot } from "@/lib/concepts";
 
 export default function SystemExplorer({ concept }: { concept: Concept }) {
   const [selected, setSelected] = useState<Hotspot | null>(null);
+  const dialogRef = useRef<HTMLElement>(null);
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
+  const activeTriggerRef = useRef<HTMLButtonElement>(null);
+
+  const closePanel = useCallback(() => {
+    setSelected(null);
+    requestAnimationFrame(() => activeTriggerRef.current?.focus());
+  }, []);
 
   useEffect(() => {
     if (!selected) return;
     const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") setSelected(null);
+      if (event.key === "Escape") closePanel();
     };
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);
-  }, [selected]);
+    requestAnimationFrame(() => closeButtonRef.current?.focus());
+  }, [closePanel, selected]);
+
+  const trapDialogFocus = (event: React.KeyboardEvent<HTMLElement>) => {
+    if (event.key !== "Tab" || !dialogRef.current) return;
+    const focusable = Array.from(
+      dialogRef.current.querySelectorAll<HTMLElement>(
+        'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])',
+      ),
+    ).filter((element) => !element.hasAttribute("disabled"));
+    if (focusable.length === 0) return;
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+    if (event.shiftKey && document.activeElement === first) {
+      event.preventDefault();
+      last.focus();
+    } else if (!event.shiftKey && document.activeElement === last) {
+      event.preventDefault();
+      first.focus();
+    }
+  };
 
   return (
     <div className="relative overflow-hidden bg-ia-cave">
@@ -35,7 +63,10 @@ export default function SystemExplorer({ concept }: { concept: Concept }) {
             type="button"
             style={{ left: `${hotspot.x}%`, top: `${hotspot.y}%` }}
             className="group absolute z-10 -translate-x-1/2 -translate-y-1/2"
-            onClick={() => setSelected(hotspot)}
+            onClick={(event) => {
+              activeTriggerRef.current = event.currentTarget;
+              setSelected(hotspot);
+            }}
             aria-label={`Explain ${hotspot.label}`}
             aria-pressed={selected?.id === hotspot.id}
           >
@@ -57,18 +88,21 @@ export default function SystemExplorer({ concept }: { concept: Concept }) {
         <div
           className="fixed inset-0 z-[80] bg-black/45 lg:absolute lg:bg-transparent"
           role="presentation"
-          onMouseDown={() => setSelected(null)}
+          onMouseDown={closePanel}
         >
           <section
+            ref={dialogRef}
             role="dialog"
             aria-modal="true"
             aria-labelledby="system-panel-title"
             className="absolute inset-x-0 bottom-0 max-h-[82dvh] overflow-y-auto bg-ia-paper p-6 text-ia-ink shadow-2xl lg:inset-y-0 lg:left-auto lg:right-0 lg:max-h-none lg:w-[27rem] lg:p-8"
             onMouseDown={(event) => event.stopPropagation()}
+            onKeyDown={trapDialogFocus}
           >
             <button
+              ref={closeButtonRef}
               type="button"
-              onClick={() => setSelected(null)}
+              onClick={closePanel}
               className="absolute right-5 top-5 flex h-11 w-11 items-center justify-center"
               aria-label="Close system explanation"
             >

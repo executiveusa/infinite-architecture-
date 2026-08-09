@@ -82,7 +82,7 @@ export default async function ConceptPage({
                 <dd className="mt-1">{concept.shelter}</dd>
               </div>
               <div className="py-4">
-                <dt className="text-xs text-ia-ink/45">Scenario investment</dt>
+                <dt className="text-xs text-ia-ink/45">Investment basis</dt>
                 <dd className="mt-1">{concept.investment}</dd>
               </div>
               <div className="py-4">

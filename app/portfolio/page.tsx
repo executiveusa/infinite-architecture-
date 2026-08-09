@@ -76,7 +76,7 @@ export default function PortfolioPage() {
                 </p>
                 <dl className="mt-7 divide-y divide-ia-line border-y border-ia-line text-xs">
                   <div className="flex justify-between gap-5 py-3">
-                    <dt className="text-ia-ink/45">Scenario investment</dt>
+                    <dt className="text-ia-ink/45">Investment basis</dt>
                     <dd className="text-right font-medium">
                       {concept.investment}
                     </dd>

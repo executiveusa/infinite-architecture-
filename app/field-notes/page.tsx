@@ -60,16 +60,27 @@ const PILLARS = [
 const FIELD_RECORDS = [
   {
     label: "FIELD TEST",
+    source: "IA-BEAD-0001 · Puerto Vallarta test panel",
+    date: "2026-06-06",
+    confidence: "Observed · seven-day result",
     title: "First panel test: foam-core cement with AR mesh",
     body: "An early material test with strong mesh adhesion and a clear lesson: edges and cure discipline matter as much as the center panel.",
   },
   {
     label: "SOURCING NOTE",
+    source:
+      "Local supplier research · technical data sheet required per product",
+    date: "2026-06-06",
+    confidence: "Material requirement established · supplier stock unverified",
     title: "AR fiberglass mesh is not standard fiberglass cloth",
     body: "Cementitious assemblies require verified alkali resistance. Supplier claims, stock and technical sheets must be checked before specification.",
   },
   {
     label: "RESEARCH COMPILATION",
+    source:
+      "Six-builder video review · engineering limits not independently tested",
+    date: "2026-06-06",
+    confidence: "Exploratory research",
     title: "Ferrocement barrel roofs: what requires engineering",
     body: "Curved shells can be material-efficient, but spans, reinforcement, mortar penetration, openings and foundations remain qualified design decisions.",
   },
@@ -154,15 +165,33 @@ export default function FieldNotesPage() {
                 key={record.title}
                 className="grid gap-4 border-b border-white/20 py-7 md:grid-cols-[.45fr_.75fr_1.3fr]"
               >
-                <p className="text-[0.62rem] font-semibold tracking-[0.16em] text-ia-paper/45">
-                  {record.label}
-                </p>
+                <div>
+                  <p className="text-[0.62rem] font-semibold tracking-[0.16em] text-ia-paper/45">
+                    {record.label}
+                  </p>
+                  <time
+                    dateTime={record.date}
+                    className="mt-2 block text-[0.62rem] text-ia-paper/45"
+                  >
+                    {record.date}
+                  </time>
+                </div>
                 <h3 className="font-editorial text-3xl leading-[1.02]">
                   {record.title}
                 </h3>
-                <p className="max-w-xl text-sm leading-relaxed text-ia-paper/65">
-                  {record.body}
-                </p>
+                <div className="max-w-xl text-sm leading-relaxed text-ia-paper/65">
+                  <p>{record.body}</p>
+                  <dl className="mt-4 border-t border-white/15 pt-3 text-xs text-ia-paper/48">
+                    <div>
+                      <dt className="inline font-semibold">Source: </dt>
+                      <dd className="inline">{record.source}</dd>
+                    </div>
+                    <div className="mt-1">
+                      <dt className="inline font-semibold">Confidence: </dt>
+                      <dd className="inline">{record.confidence}</dd>
+                    </div>
+                  </dl>
+                </div>
               </article>
             ))}
           </div>

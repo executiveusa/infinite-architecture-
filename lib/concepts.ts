@@ -138,7 +138,7 @@ export const CONCEPTS: Concept[] = [
     use: "Starter rental or compact residence",
     image: "/images/concepts/casa-semilla.webp",
     alt: "AI-generated concept of a compact tropical cabin with solar panels, rainwater collection and layered foodscape",
-    investment: "MXN $1.4M–$2.6M scenario range",
+    investment: "Modeled after site + scope review",
     gridTarget: "Reduced dependence with defined backup",
     shelter: "Panelized or lightweight hybrid shell",
     description:
@@ -161,7 +161,7 @@ export const CONCEPTS: Concept[] = [
     use: "Hillside residence or premium rental",
     image: "/images/concepts/agua-alta.webp",
     alt: "AI-generated hillside concept with solar roof, rainwater cistern, drainage and productive tropical planting",
-    investment: "MXN $3.8M–$7.2M scenario range",
+    investment: "Modeled after site + scope review",
     gridTarget: "High resilience with utility or generator backup",
     shelter: "Engineered curved or lightweight hybrid shell",
     description:
@@ -185,7 +185,7 @@ export const CONCEPTS: Concept[] = [
     use: "Nature-stay cluster or retreat",
     image: "/images/concepts/bosque-vivo.webp",
     alt: "AI-generated nature-stay cluster with shared solar canopy, water storage and productive food forest",
-    investment: "MXN $9M–$18M phased scenario range",
+    investment: "Modeled after site + scope review",
     gridTarget: "Shared resilient systems with planned backup",
     shelter: "Mixed compact cabins + shared pavilion",
     description:

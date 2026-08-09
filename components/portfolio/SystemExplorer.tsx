@@ -16,15 +16,20 @@ export default function SystemExplorer({ concept }: { concept: Concept }) {
   const dialogRef = useRef<HTMLElement>(null);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
   const activeTriggerRef = useRef<HTMLButtonElement>(null);
+  const wasOpenRef = useRef(false);
 
   const closePanel = useCallback(() => {
-    const trigger = activeTriggerRef.current;
     setSelected(null);
-    requestAnimationFrame(() => trigger?.focus());
   }, []);
 
   useLayoutEffect(() => {
-    if (selected) closeButtonRef.current?.focus();
+    if (selected) {
+      wasOpenRef.current = true;
+      closeButtonRef.current?.focus();
+    } else if (wasOpenRef.current) {
+      wasOpenRef.current = false;
+      activeTriggerRef.current?.focus();
+    }
   }, [selected]);
 
   useEffect(() => {

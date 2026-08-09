@@ -1,7 +1,13 @@
 "use client";
 
 import Image from "next/image";
-import { useCallback, useEffect, useRef, useState } from "react";
+import {
+  useCallback,
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState,
+} from "react";
 import { Info, X } from "lucide-react";
 import type { Concept, Hotspot } from "@/lib/concepts";
 
@@ -12,38 +18,42 @@ export default function SystemExplorer({ concept }: { concept: Concept }) {
   const activeTriggerRef = useRef<HTMLButtonElement>(null);
 
   const closePanel = useCallback(() => {
+    const trigger = activeTriggerRef.current;
     setSelected(null);
-    requestAnimationFrame(() => activeTriggerRef.current?.focus());
+    requestAnimationFrame(() => trigger?.focus());
   }, []);
+
+  useLayoutEffect(() => {
+    if (selected) closeButtonRef.current?.focus();
+  }, [selected]);
 
   useEffect(() => {
     if (!selected) return;
     const onKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") closePanel();
+      if (event.key !== "Tab" || !dialogRef.current) return;
+      const focusable = Array.from(
+        dialogRef.current.querySelectorAll<HTMLElement>(
+          'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])',
+        ),
+      ).filter((element) => !element.hasAttribute("disabled"));
+      if (focusable.length === 0) return;
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (
+        !dialogRef.current.contains(document.activeElement) ||
+        (event.shiftKey && document.activeElement === first)
+      ) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
     };
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);
-    requestAnimationFrame(() => closeButtonRef.current?.focus());
   }, [closePanel, selected]);
-
-  const trapDialogFocus = (event: React.KeyboardEvent<HTMLElement>) => {
-    if (event.key !== "Tab" || !dialogRef.current) return;
-    const focusable = Array.from(
-      dialogRef.current.querySelectorAll<HTMLElement>(
-        'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])',
-      ),
-    ).filter((element) => !element.hasAttribute("disabled"));
-    if (focusable.length === 0) return;
-    const first = focusable[0];
-    const last = focusable[focusable.length - 1];
-    if (event.shiftKey && document.activeElement === first) {
-      event.preventDefault();
-      last.focus();
-    } else if (!event.shiftKey && document.activeElement === last) {
-      event.preventDefault();
-      first.focus();
-    }
-  };
 
   return (
     <div className="relative overflow-hidden bg-ia-cave">
@@ -97,7 +107,6 @@ export default function SystemExplorer({ concept }: { concept: Concept }) {
             aria-labelledby="system-panel-title"
             className="absolute inset-x-0 bottom-0 max-h-[82dvh] overflow-y-auto bg-ia-paper p-6 text-ia-ink shadow-2xl lg:inset-y-0 lg:left-auto lg:right-0 lg:max-h-none lg:w-[27rem] lg:p-8"
             onMouseDown={(event) => event.stopPropagation()}
-            onKeyDown={trapDialogFocus}
           >
             <button
               ref={closeButtonRef}

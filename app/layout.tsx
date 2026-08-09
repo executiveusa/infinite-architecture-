@@ -5,34 +5,33 @@ import Footer from '@/components/shared/Footer'
 
 export const metadata: Metadata = {
   title: {
-    default: 'Infinite Architecture — Biophilic Design & Project Coordination',
+    default: 'Infinite Architecture — Site-to-Stay Strategy in Puerto Vallarta',
     template: '%s — Infinite Architecture',
   },
   description:
-    'Biophilic concept design, 3D visualization, and coordinated project delivery for Airbnbs, glamping retreats, off-grid properties, landowners, and real-estate teams in Puerto Vallarta.',
+    'Turn land near Puerto Vallarta and Riviera Nayarit into a coherent nature-based hospitality concept before disconnected decisions get expensive.',
   keywords: [
     'biophilic design Puerto Vallarta',
-    'Airbnb design Puerto Vallarta',
+    'glamping property strategy Puerto Vallarta',
     'glamping design Mexico',
     'off-grid design',
-    '3D real estate visualization',
-    'project coordination Puerto Vallarta',
-    'dome design',
-    'natural building',
+    'nature stay development Mexico',
+    'site opportunity scan',
+    'biophilic hospitality design',
     'climate-responsive architecture',
   ],
   openGraph: {
     type: 'website',
     siteName: 'Infinite Architecture',
-    title: 'Infinite Architecture — Build Places People Remember',
+    title: 'Infinite Architecture — Know What Your Land Can Become',
     description:
-      'Biophilic concepts, 3D visualization, and coordinated delivery for Airbnbs, glamping retreats, and off-grid living.',
+      'Site-to-Stay strategy for nature-based hospitality properties in Puerto Vallarta and Riviera Nayarit.',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Infinite Architecture — Build Places People Remember',
+    title: 'Infinite Architecture — Site-to-Stay Strategy',
     description:
-      'Biophilic concepts and coordinated project delivery in Puerto Vallarta.',
+      'Know what your property can become before you build.',
   },
   robots: {
     index: true,

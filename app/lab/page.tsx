@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
-import { FlaskConical, Calendar, CheckCircle, Circle, AlertTriangle } from 'lucide-react'
+import Link from 'next/link'
+import { FlaskConical, Calendar, CheckCircle, AlertTriangle } from 'lucide-react'
 
 export const metadata: Metadata = {
   title: 'Lab',
@@ -55,7 +56,7 @@ export default function LabPage() {
                 <div>
                   <div className="flex items-center gap-3 mb-3">
                     <span className="label-text text-ia-muted font-mono">{entry.id}</span>
-                    <span className="label-text text-ia-muted">//</span>
+                    <span className="label-text text-ia-muted">{'//'}</span>
                     <span className="label-text text-ia-muted font-mono">{entry.bead}</span>
                   </div>
                   <h2 className="text-2xl font-bold text-ia-text mb-2">{entry.title}</h2>
@@ -124,12 +125,12 @@ export default function LabPage() {
               Document everything. Link to a bead.
             </p>
           </div>
-          <a
+          <Link
             href="/build-systems/material-test-panel-protocol"
             className="flex-shrink-0 border border-ia-gold text-ia-gold label-text px-4 py-2 hover:bg-ia-gold hover:text-bg-base transition-all duration-200"
           >
             VIEW PROTOCOL →
-          </a>
+          </Link>
         </div>
       </div>
     </div>

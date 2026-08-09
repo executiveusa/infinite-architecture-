@@ -66,7 +66,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
         <header className="h-14 border-b border-ia-border flex items-center justify-between px-6 bg-bg-surface sticky top-0 z-40">
           <div className="flex items-center gap-4">
             <span className="label-text text-ia-text">INFINITE ARCHITECTURE</span>
-            <span className="label-text text-ia-muted">//</span>
+            <span className="label-text text-ia-muted">{'//'}</span>
             <span className="label-text text-ia-muted">DASHBOARD</span>
           </div>
           <div className="flex items-center gap-4">

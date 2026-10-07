@@ -28,7 +28,7 @@ const PREVIEW_NOTES = [
 const SOURCE_ICONS = {
   'field-test': Wrench,
   'conversation': MessageSquare,
-  'youtube': Youtube,
+  'youtube': Video,
   'repo': FlaskConical,
   'local-note': FlaskConical,
 }

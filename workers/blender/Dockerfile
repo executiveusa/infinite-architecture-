@@ -18,6 +18,7 @@ RUN apt-get update \
        libxfixes3 \
        libxrender1 \
        libgl1 \
+       libegl1 \
     && rm -rf /var/lib/apt/lists/*
 
 RUN set -eux; \

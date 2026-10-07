@@ -15,7 +15,7 @@ import subprocess
 from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime, timezone
 from pathlib import Path
-from threading import Lock
+from threading import RLock
 from typing import Literal
 
 from fastapi import FastAPI, Header, HTTPException
@@ -32,7 +32,7 @@ MAX_CONCURRENT_JOBS = max(1, min(int(os.getenv("BLENDER_MAX_CONCURRENT_JOBS", "1
 
 DATA_DIR.mkdir(parents=True, exist_ok=True)
 EXECUTOR = ThreadPoolExecutor(max_workers=MAX_CONCURRENT_JOBS)
-STATE_LOCK = Lock()
+STATE_LOCK = RLock()
 
 JOB_ID = re.compile(r"^[A-Z0-9][A-Z0-9_-]{3,63}$")
 ARTIFACTS = {

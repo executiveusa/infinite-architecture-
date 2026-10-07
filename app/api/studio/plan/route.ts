@@ -17,12 +17,19 @@ function extractJson(value: string) {
   }
 }
 
+function parseBrief(raw: string) {
+  const candidate = extractJson(raw)
+  const validated = StudioBriefSchema.safeParse(candidate)
+  return validated.success ? validated.data : null
+}
+
 function plannerPrompt(message: string, projectId?: string) {
   return [
     'You are the private Infinite Architecture concept-studio planner.',
     'Return JSON only. Do not return markdown or chain-of-thought.',
     'This is concept visualization and project coordination, not licensed architectural or engineering work.',
     'Never invent supplier quotes, code compliance, permit approval, structural performance, or completed projects.',
+    'Separate known facts from assumptions. Ask only questions that materially affect scope, cost, geometry, climate response, or supplier selection.',
     'Schema:',
     JSON.stringify({
       projectId: projectId ?? 'IA-STUDIO-generated-id',
@@ -53,10 +60,78 @@ function plannerPrompt(message: string, projectId?: string) {
     }),
     'Valid sourceStatus values: verified-quote, estimate, allowance.',
     'Keep conceptDirections between 2 and 4.',
-    'Include cost lines for structure, logistics, site/foundation, utilities, labor, landscape/guest areas, and contingency.',
+    'Include cost lines for structure, logistics, site/foundation, utilities, labor, landscape/guest areas, professional services if applicable, and contingency.',
     'User outcome:',
     message,
   ].join('\n')
+}
+
+async function planWithPiAgent(prompt: string) {
+  const baseUrl = process.env.PI_AGENT_BASE_URL?.replace(/\/$/, '')
+  const apiKey = process.env.PI_AGENT_API_KEY
+  if (!baseUrl || !apiKey) return null
+
+  const controller = new AbortController()
+  const timeout = setTimeout(() => controller.abort(), 25_000)
+  try {
+    const upstream = await fetch(`${baseUrl}/chat`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${apiKey}`,
+      },
+      body: JSON.stringify({
+        message: prompt,
+        context: 'infinite-architecture-private-concept-studio',
+      }),
+      signal: controller.signal,
+      cache: 'no-store',
+    })
+    if (!upstream.ok) return null
+
+    const data = await upstream.json()
+    return String(data.response ?? data.message ?? data.content ?? '')
+  } finally {
+    clearTimeout(timeout)
+  }
+}
+
+async function planWithVercelGateway(prompt: string) {
+  const oidcToken = process.env.VERCEL_OIDC_TOKEN
+  const apiKey = process.env.AI_GATEWAY_API_KEY
+  const credential = apiKey || oidcToken
+  if (!credential) return null
+
+  const controller = new AbortController()
+  const timeout = setTimeout(() => controller.abort(), 25_000)
+  try {
+    const upstream = await fetch('https://ai-gateway.vercel.sh/v1/chat/completions', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${credential}`,
+      },
+      body: JSON.stringify({
+        model: process.env.IA_STUDIO_MODEL || 'openai/gpt-5.6-sol',
+        messages: [
+          {
+            role: 'system',
+            content:
+              'You are the private Infinite Architecture planning engine. Follow the JSON-only response contract exactly.',
+          },
+          { role: 'user', content: prompt },
+        ],
+      }),
+      signal: controller.signal,
+      cache: 'no-store',
+    })
+    if (!upstream.ok) return null
+
+    const data = await upstream.json()
+    return String(data.choices?.[0]?.message?.content ?? '')
+  } finally {
+    clearTimeout(timeout)
+  }
 }
 
 export async function POST(request: NextRequest) {
@@ -73,49 +148,39 @@ export async function POST(request: NextRequest) {
 
   const parsed = StudioPlanInputSchema.safeParse(body)
   if (!parsed.success) {
-    return NextResponse.json({ error: 'Describe the project outcome in more detail.' }, { status: 400 })
+    return NextResponse.json(
+      { error: 'Describe the project outcome in more detail.' },
+      { status: 400 }
+    )
   }
 
   const fallback = buildFallbackBrief(parsed.data.message, parsed.data.projectId)
-  const baseUrl = process.env.PI_AGENT_BASE_URL?.replace(/\/$/, '')
-  const apiKey = process.env.PI_AGENT_API_KEY
+  const prompt = plannerPrompt(parsed.data.message, parsed.data.projectId)
 
-  if (!baseUrl || !apiKey) {
-    return NextResponse.json({ brief: fallback, mode: 'deterministic-fallback' })
+  try {
+    const piRaw = await planWithPiAgent(prompt)
+    if (piRaw) {
+      const brief = parseBrief(piRaw)
+      if (brief) return NextResponse.json({ brief, mode: 'pi-agent' })
+    }
+  } catch {
+    // Continue to the managed model fallback.
   }
 
   try {
-    const controller = new AbortController()
-    const timeout = setTimeout(() => controller.abort(), 25_000)
-    const upstream = await fetch(`${baseUrl}/chat`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${apiKey}`,
-      },
-      body: JSON.stringify({
-        message: plannerPrompt(parsed.data.message, parsed.data.projectId),
-        context: 'infinite-architecture-private-concept-studio',
-      }),
-      signal: controller.signal,
-      cache: 'no-store',
-    })
-    clearTimeout(timeout)
-
-    if (!upstream.ok) {
-      return NextResponse.json({ brief: fallback, mode: 'deterministic-fallback' })
+    const gatewayRaw = await planWithVercelGateway(prompt)
+    if (gatewayRaw) {
+      const brief = parseBrief(gatewayRaw)
+      if (brief) {
+        return NextResponse.json({
+          brief,
+          mode: `vercel-gateway:${process.env.IA_STUDIO_MODEL || 'openai/gpt-5.6-sol'}`,
+        })
+      }
     }
-
-    const data = await upstream.json()
-    const raw = String(data.response ?? data.message ?? data.content ?? '')
-    const candidate = extractJson(raw)
-    const validated = StudioBriefSchema.safeParse(candidate)
-    if (!validated.success) {
-      return NextResponse.json({ brief: fallback, mode: 'deterministic-fallback' })
-    }
-
-    return NextResponse.json({ brief: validated.data, mode: 'pi-agent' })
   } catch {
-    return NextResponse.json({ brief: fallback, mode: 'deterministic-fallback' })
+    // The deterministic planner keeps the private studio usable when inference is unavailable.
   }
+
+  return NextResponse.json({ brief: fallback, mode: 'deterministic-fallback' })
 }

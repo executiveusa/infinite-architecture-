@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { getBuildSystems, getMaterials, getBeads } from '@/lib/data'\nimport { isDashboardRequestAuthorized } from '@/lib/dashboard-auth'
+import { getBuildSystems, getMaterials, getBeads } from '@/lib/data'
+import { isDashboardRequestAuthorized } from '@/lib/dashboard-auth'
 
 const PI_AGENT_BASE_URL = process.env.PI_AGENT_BASE_URL
 const PI_AGENT_API_KEY = process.env.PI_AGENT_API_KEY
@@ -48,6 +49,10 @@ async function localKnowledgeResponse(message: string): Promise<string> {
 }
 
 export async function POST(req: NextRequest) {
+  if (!isDashboardRequestAuthorized(req)) {
+    return NextResponse.json({ error: 'Unauthorized.' }, { status: 401 })
+  }
+
   try {
     const { message } = await req.json()
 
@@ -55,7 +60,6 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'message is required' }, { status: 400 })
     }
 
-    // If Pi Agent is configured, proxy to it
     if (PI_AGENT_BASE_URL && PI_AGENT_API_KEY) {
       const upstream = await fetch(`${PI_AGENT_BASE_URL}/chat`, {
         method: 'POST',
@@ -75,7 +79,6 @@ export async function POST(req: NextRequest) {
       }
     }
 
-    // Fallback: local knowledge base response
     const response = await localKnowledgeResponse(message)
     return NextResponse.json({ response, mode: 'local-knowledge' })
   } catch (error) {

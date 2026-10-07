@@ -1,3 +1,4 @@
+import { createHash } from 'node:crypto'
 import { NextRequest, NextResponse } from 'next/server'
 import { z } from 'zod'
 import {
@@ -10,9 +11,43 @@ const LoginSchema = z.object({
   secret: z.string().min(12).max(512),
 })
 
+type Attempt = { count: number; resetAt: number }
+const attempts = new Map<string, Attempt>()
+const WINDOW_MS = 15 * 60 * 1000
+const MAX_ATTEMPTS = 8
+
+function clientKey(request: NextRequest) {
+  const forwarded = request.headers.get('x-forwarded-for')?.split(',')[0]?.trim()
+  const raw = forwarded || request.headers.get('x-real-ip') || 'unknown'
+  return createHash('sha256').update(raw).digest('hex')
+}
+
+function rateLimited(key: string) {
+  const now = Date.now()
+  const current = attempts.get(key)
+  if (!current || current.resetAt <= now) {
+    attempts.set(key, { count: 1, resetAt: now + WINDOW_MS })
+    return false
+  }
+  current.count += 1
+  return current.count > MAX_ATTEMPTS
+}
+
+function clearAttempts(key: string) {
+  attempts.delete(key)
+}
+
 export async function POST(request: NextRequest) {
+  const key = clientKey(request)
+  if (rateLimited(key)) {
+    return NextResponse.json(
+      { error: 'Too many attempts. Try again later.' },
+      { status: 429 }
+    )
+  }
+
   const configuredSecret = process.env.DASHBOARD_SECRET
-  if (!configuredSecret) {
+  if (!configuredSecret || configuredSecret.length < 24) {
     return NextResponse.json(
       { error: 'Dashboard access is not configured.' },
       { status: 503 }
@@ -31,6 +66,7 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: 'Access denied.' }, { status: 401 })
   }
 
+  clearAttempts(key)
   const response = NextResponse.json({ ok: true })
   response.cookies.set(DASHBOARD_COOKIE, dashboardToken(configuredSecret), {
     httpOnly: true,

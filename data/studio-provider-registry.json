@@ -1,0 +1,29 @@
+[
+  {
+    "id": "blender",
+    "name": "Blender",
+    "role": "Owned scene, parametric concept geometry, editable source, still renders, GLB export, and walkthrough production.",
+    "status": "preferred-core",
+    "open_source": true,
+    "source_url": "https://docs.blender.org/api/main/info_tips_and_tricks.html",
+    "boundary": "The studio worker accepts bounded scene specs. Do not expose arbitrary Python execution from the web UI."
+  },
+  {
+    "id": "trellis",
+    "name": "Microsoft TRELLIS",
+    "role": "Optional local/open-source generation of decorative or concept-study 3D assets that can be imported into Blender.",
+    "status": "optional",
+    "open_source": true,
+    "source_url": "https://github.com/microsoft/TRELLIS",
+    "boundary": "Generated assets are not structural geometry or construction documentation. Verify licenses of included submodules/models before production use."
+  },
+  {
+    "id": "meshy",
+    "name": "Meshy",
+    "role": "Optional paid accelerator for AI 3D asset generation and Blender transfer.",
+    "status": "optional-paid",
+    "open_source": false,
+    "source_url": "https://docs.meshy.ai/en/webapp/plugins/blender/introduction",
+    "boundary": "Use for visual assets and ideation, not structural dimensions. Verify current plan, retention, credits, and API model versions before each integration change."
+  }
+]

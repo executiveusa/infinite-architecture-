@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { getBuildSystems, getMaterials, getBeads } from '@/lib/data'
+import { getBuildSystems, getMaterials, getBeads } from '@/lib/data'\nimport { isDashboardRequestAuthorized } from '@/lib/dashboard-auth'
 
 const PI_AGENT_BASE_URL = process.env.PI_AGENT_BASE_URL
 const PI_AGENT_API_KEY = process.env.PI_AGENT_API_KEY

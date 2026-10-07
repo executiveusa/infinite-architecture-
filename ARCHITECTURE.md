@@ -2,7 +2,7 @@
 
 ## Overview
 
-Single-repo Next.js 15 application. App Router. TypeScript throughout.
+Single-repo Next.js 16 application. App Router. TypeScript throughout.
 Filesystem-based content layer (MVP), migrating to Supabase for production.
 
 ```
@@ -74,12 +74,15 @@ Filesystem-based content layer (MVP), migrating to Supabase for production.
 /api/social-queue/[id]  GET, PUT, DELETE
 /api/beads              GET list, POST create
 /api/field-notes        GET list
-/api/pi-agent           POST chat query (Pi Agent stub)
+/api/pi-agent           POST private chat query
+/api/studio/plan         POST outcome -> concept brief
+/api/studio/estimate     POST internal cost/margin calculation
+/api/studio/blender      POST bounded Blender job draft/queue
 ```
 
 ## Pi Agent Integration
 
-- Stub at `/api/pi-agent/route.ts`
+- Private authenticated route at `/api/pi-agent/route.ts`
 - Reads `PI_AGENT_BASE_URL` and `PI_AGENT_API_KEY` from env
 - Falls back to local knowledge base if Pi Agent unavailable
 - Dashboard chat panel connects to this endpoint

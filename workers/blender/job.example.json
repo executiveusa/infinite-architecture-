@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "jobId": "IA3D-DEMO0001",
+  "projectId": "IA-STUDIO-DEMO",
+  "projectName": "Six-dome tropical retreat",
+  "location": "Puerto Vallarta",
+  "scene": {
+    "units": "METRIC",
+    "coordinateSystem": "Z_UP",
+    "structureType": "Supplier-backed dome village",
+    "targetUnits": 6
+  },
+  "outputs": ["blend", "glb", "stills"],
+  "constraints": {
+    "arbitraryPythonAllowed": false,
+    "conceptVisualizationOnly": true,
+    "structuralCertification": false,
+    "preserveEditableBlendFile": true
+  }
+}

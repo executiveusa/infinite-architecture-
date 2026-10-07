@@ -12,12 +12,35 @@ The public site must generate qualified project inquiries. The private Pi Agent 
 
 The current revenue offer is:
 
-> Site-to-Stay Opportunity Scan → biophilic concept sprint → owner-side coordination → ongoing property evolution.
+> Site-to-Stay Opportunity Scan → client-ready 3D concept → supplier-backed offer → owner-side coordination → ongoing property evolution.
 
 The Opportunity Scan is a bounded commercial review, not engineering, permit approval, appraisal,
 lender-grade feasibility, architectural certification, or construction documentation.
 
 Do not add unrelated software products before the public offer, inquiry path, and proof portfolio work.
+
+## Private concept studio
+
+The software is internal. Do not turn the dashboard, Pi Agent, Blender worker, supplier ledger, or margin calculator into a public SaaS product without a new commercial decision.
+
+The owner-facing studio should accept plain-language outcomes and hide tool complexity. It may:
+- create a concept brief;
+- generate bounded Blender job specs;
+- track supplier candidates and written quotes;
+- calculate internal offer math;
+- prepare client-facing concept packages.
+
+Blender is the scene of record. Optional AI 3D providers are accelerators for visual assets only.
+
+Never:
+- invent supplier pricing;
+- execute arbitrary Python or shell commands from chat;
+- treat AI-generated geometry as engineering;
+- expose private costs, margin, client data, provider keys, or vendor notes publicly.
+
+A 30% target gross margin uses `price = landed_cost / 0.70`; it is not the same as a 30% markup.
+
+Read `docs/PRIVATE_CONCEPT_STUDIO.md` before changing the studio workflow.
 
 ## Project role boundaries
 

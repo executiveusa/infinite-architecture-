@@ -1,0 +1,42 @@
+[
+  {
+    "id": "pacific-domes",
+    "name": "Pacific Domes",
+    "category": "geodesic-dome-supplier",
+    "website": "https://pacificdomes.com/",
+    "status": "candidate",
+    "pricing_status": "requires-written-quote",
+    "use": "Supplier-backed dome concepts after dimensions, scope, freight, and current quote are verified.",
+    "rules": [
+      "Do not publish or promise a price from memory.",
+      "Store quote date, currency, model/configuration, inclusions, exclusions, freight terms, tax/import assumptions, and quote validity.",
+      "Supplier drawings do not replace local engineering, foundation design, permits, or regulated professional review."
+    ]
+  },
+  {
+    "id": "local-foundation-partner",
+    "name": "Local foundation / site partner",
+    "category": "site-and-foundation",
+    "website": null,
+    "status": "unassigned",
+    "pricing_status": "requires-site-specific-quote",
+    "use": "Site preparation and foundation scope after survey, soil, drainage, and structural requirements are known.",
+    "rules": [
+      "No allowance becomes a client commitment until scope is verified.",
+      "Use qualified local professionals for regulated work."
+    ]
+  },
+  {
+    "id": "local-living-systems-partners",
+    "name": "Local water, solar, landscape, and waste partners",
+    "category": "living-systems",
+    "website": null,
+    "status": "unassigned",
+    "pricing_status": "requires-site-specific-quote",
+    "use": "Coordinate utilities and living systems around the approved property concept.",
+    "rules": [
+      "Record vendor scope boundaries and dependencies.",
+      "Keep maintenance requirements visible in the offer."
+    ]
+  }
+]

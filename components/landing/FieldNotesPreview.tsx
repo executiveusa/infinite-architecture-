@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { ArrowRight, FlaskConical, MessageSquare, Youtube, Wrench } from 'lucide-react'
+import { ArrowRight, FlaskConical, MessageSquare, Video, Wrench } from 'lucide-react'
 
 const PREVIEW_NOTES = [
   {
@@ -28,7 +28,7 @@ const PREVIEW_NOTES = [
 const SOURCE_ICONS = {
   'field-test': Wrench,
   'conversation': MessageSquare,
-  'youtube': Youtube,
+  'youtube': Video,
   'repo': FlaskConical,
   'local-note': FlaskConical,
 }

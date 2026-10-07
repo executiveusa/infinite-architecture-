@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import type { SocialQueueItem } from '@/lib/types'
-import { Instagram, Twitter, Linkedin, Youtube, CheckCircle, Clock, XCircle } from 'lucide-react'
+import { Camera, MessageCircle, BriefcaseBusiness, Video, CheckCircle, Clock, XCircle } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
 interface SocialStudioProps {
@@ -10,10 +10,10 @@ interface SocialStudioProps {
 }
 
 const PLATFORM_ICONS: Record<string, React.ReactNode> = {
-  instagram: <Instagram size={14} />,
-  x: <Twitter size={14} />,
-  linkedin: <Linkedin size={14} />,
-  'youtube-shorts': <Youtube size={14} />,
+  instagram: <Camera size={14} />,
+  x: <MessageCircle size={14} />,
+  linkedin: <BriefcaseBusiness size={14} />,
+  'youtube-shorts': <Video size={14} />,
   tiktok: <span className="label-text text-xs">TT</span>,
   facebook: <span className="label-text text-xs">FB</span>,
 }

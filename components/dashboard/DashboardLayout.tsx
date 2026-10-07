@@ -10,11 +10,14 @@ import {
   Share2,
   MessageSquare,
   GitBranch,
+  Sparkles,
+  LockKeyhole,
 } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
 const NAV_ITEMS = [
   { href: '/dashboard', icon: LayoutDashboard, label: 'Command Center' },
+  { href: '/dashboard/studio', icon: Sparkles, label: 'Concept Studio' },
   { href: '/dashboard/editorial', icon: FileText, label: 'Editorial Pipeline' },
   { href: '/dashboard/materials', icon: Package, label: 'Material Registry' },
   { href: '/dashboard/build-systems', icon: Wrench, label: 'Build Systems' },
@@ -26,17 +29,22 @@ const NAV_ITEMS = [
 export default function DashboardLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname()
 
+  async function lockStudio() {
+    await fetch('/api/dashboard-auth', { method: 'DELETE' }).catch(() => null)
+    window.location.href = '/studio-access'
+  }
+
   return (
     <div className="min-h-screen bg-bg-base flex">
-      {/* Nav Rail */}
       <aside className="fixed top-0 left-0 bottom-0 w-16 bg-bg-surface border-r border-ia-border flex flex-col items-center py-6 gap-2 z-50">
-        {/* Logo dot */}
         <div className="w-8 h-8 border border-ia-orange flex items-center justify-center mb-6">
           <div className="w-2 h-2 bg-ia-orange rounded-full" />
         </div>
 
         {NAV_ITEMS.map(({ href, icon: Icon, label }) => {
-          const isActive = pathname === href
+          const isActive = href === '/dashboard'
+            ? pathname === href
+            : pathname === href || pathname.startsWith(`${href}/`)
           return (
             <Link
               key={href}
@@ -51,7 +59,6 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
               {isActive && (
                 <div className="absolute right-0 top-1/2 -translate-y-1/2 w-0.5 h-5 bg-ia-orange" />
               )}
-              {/* Tooltip */}
               <div className="absolute left-14 top-1/2 -translate-y-1/2 bg-bg-elevated border border-ia-border px-2 py-1 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-50 whitespace-nowrap">
                 <span className="label-text text-ia-text">{label}</span>
               </div>
@@ -60,20 +67,26 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
         })}
       </aside>
 
-      {/* Main area */}
       <div className="flex-1 ml-16">
-        {/* Top bar */}
         <header className="h-14 border-b border-ia-border flex items-center justify-between px-6 bg-bg-surface sticky top-0 z-40">
           <div className="flex items-center gap-4">
             <span className="label-text text-ia-text">INFINITE ARCHITECTURE</span>
             <span className="label-text text-ia-muted">{'//'}</span>
-            <span className="label-text text-ia-muted">DASHBOARD</span>
+            <span className="label-text text-ia-muted">PRIVATE STUDIO</span>
           </div>
           <div className="flex items-center gap-4">
-            <div className="flex items-center gap-2">
+            <div className="hidden sm:flex items-center gap-2">
               <div className="w-1.5 h-1.5 bg-ia-sage rounded-full animate-pulse-slow" />
-              <span className="label-text text-ia-sage">SYSTEM ACTIVE</span>
+              <span className="label-text text-ia-sage">OWNER MODE</span>
             </div>
+            <button
+              type="button"
+              onClick={() => void lockStudio()}
+              className="inline-flex items-center gap-2 label-text text-ia-muted hover:text-ia-rust transition-colors"
+            >
+              <LockKeyhole size={13} />
+              LOCK
+            </button>
             <Link
               href="/"
               className="label-text text-ia-muted hover:text-ia-text transition-colors"
@@ -83,8 +96,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
           </div>
         </header>
 
-        {/* Page content */}
-        <main className="p-8">
+        <main className="p-5 md:p-8">
           {children}
         </main>
       </div>

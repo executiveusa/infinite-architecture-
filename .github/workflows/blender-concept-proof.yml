@@ -1,0 +1,49 @@
+name: Blender concept proof
+
+on:
+  push:
+    branches:
+      - feature/private-concept-studio-v1
+    paths:
+      - "workers/blender/**"
+      - ".github/workflows/blender-concept-proof.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  render-concept:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install Blender
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y blender
+          blender --version
+
+      - name: Render bounded demo concept
+        run: |
+          mkdir -p artifacts/blender-proof
+          blender --background             --python workers/blender/generate_concept.py             -- workers/blender/job.example.json artifacts/blender-proof
+
+      - name: Verify expected artifacts
+        run: |
+          test -s artifacts/blender-proof/concept.blend
+          test -s artifacts/blender-proof/concept.glb
+          test -s artifacts/blender-proof/hero.png
+          test -s artifacts/blender-proof/manifest.json
+          cat artifacts/blender-proof/manifest.json
+          sha256sum artifacts/blender-proof/* > artifacts/blender-proof/SHA256SUMS.txt
+
+      - name: Upload proof artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: infinite-architecture-blender-proof
+          path: artifacts/blender-proof
+          if-no-files-found: error
+          retention-days: 7

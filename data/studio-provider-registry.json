@@ -1,5 +1,14 @@
 [
   {
+    "id": "vercel-ai-gateway",
+    "name": "Vercel AI Gateway",
+    "role": "Managed model fallback for private concept planning when the dedicated Pi Agent endpoint is not configured or unavailable.",
+    "status": "preferred-managed-fallback",
+    "open_source": false,
+    "source_url": "https://vercel.com/docs/ai-gateway",
+    "boundary": "Model output must validate against the studio brief schema. Supplier prices, permit status, engineering claims, and completed-project claims may not be invented. Prefer Pi Agent when its authenticated service endpoint is available."
+  },
+  {
     "id": "blender",
     "name": "Blender",
     "role": "Owned scene, parametric concept geometry, editable source, still renders, GLB export, and walkthrough production.",

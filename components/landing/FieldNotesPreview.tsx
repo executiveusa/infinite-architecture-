@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { ArrowRight, FlaskConical, MessageSquare, Youtube, Wrench } from 'lucide-react'
+import { ArrowRight, FlaskConical, MessageSquare, Video, Wrench } from 'lucide-react'
 
 const PREVIEW_NOTES = [
   {

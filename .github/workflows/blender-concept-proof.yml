@@ -16,20 +16,32 @@ jobs:
   render-concept:
     runs-on: ubuntu-latest
     timeout-minutes: 20
+    env:
+      BLENDER_VERSION: "4.5.14"
+      BLENDER_RELEASE: "Blender4.5"
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Install Blender
+      - name: Install official Blender LTS
         run: |
-          sudo apt-get update
-          sudo apt-get install -y blender python3-numpy
-          blender --version
+          set -euo pipefail
+          archive="blender-${BLENDER_VERSION}-linux-x64.tar.xz"
+          base="https://download.blender.org/release/${BLENDER_RELEASE}"
+          curl -fsSLO "${base}/${archive}"
+          curl -fsSLO "${base}/blender-${BLENDER_VERSION}.sha256"
+          grep " ${archive}$" "blender-${BLENDER_VERSION}.sha256" | sha256sum -c -
+          tar -xf "${archive}"
+          echo "$PWD/blender-${BLENDER_VERSION}-linux-x64" >> "$GITHUB_PATH"
+          "$PWD/blender-${BLENDER_VERSION}-linux-x64/blender" --version
+
+      - name: Check worker Python syntax
+        run: python3 -m py_compile workers/blender/server.py
 
       - name: Render bounded demo concept
         run: |
           mkdir -p artifacts/blender-proof
-          blender --background             --python workers/blender/generate_concept.py             -- workers/blender/job.example.json artifacts/blender-proof
+          blender --background --factory-startup --python-exit-code 1 --python workers/blender/generate_concept.py -- workers/blender/job.example.json artifacts/blender-proof
 
       - name: Verify expected artifacts
         run: |

@@ -12,6 +12,10 @@ on:
 permissions:
   contents: read
 
+concurrency:
+  group: blender-proof-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   render-concept:
     runs-on: ubuntu-latest

@@ -84,6 +84,30 @@ const FIELD_RECORDS = [
     title: "Ferrocement barrel roofs: what requires engineering",
     body: "Curved shells can be material-efficient, but spans, reinforcement, mortar penetration, openings and foundations remain qualified design decisions.",
   },
+  {
+    label: "FIELD TEST",
+    source: "Owner kitchen build · Puerto Vallarta",
+    date: "2026-10-19",
+    confidence: "In progress · observed owner build",
+    title: "Microcement over XPS: the countertop test",
+    body: "XPS core with mesh, Uniblock Basecoat, then a Construido microcement kit (emulsion, base, finish). A Sayer Metalite clear two-part PU topcoat is planned for waterproofing. Lesson so far: the two-part Metalite system (resin plus catalyzer) cannot stretch past its rated coverage - the finish coat has to go on thin, possibly blended with white cement, because another kit is not an option mid-build.",
+  },
+  {
+    label: "FIELD TEST",
+    source: "Panel research · owner scope October 2026",
+    date: "2026-10-19",
+    confidence: "Scope set · tests to follow",
+    title: "Microcement and XPS panels: open test lane",
+    body: "A standing lane for microcement finishes and XPS panel assemblies: adhesion, edge discipline, waterproofing and repair. Results join this log as each test completes.",
+  },
+];
+
+const PRODUCTS_USED = [
+  { name: "XPS panels", use: "Lightweight, moisture-resistant core for the countertop form." },
+  { name: "AR fiberglass mesh", use: "Alkali-resistant reinforcement embedded in the base coat." },
+  { name: "Uniblock Basecoat", use: "Base coat over the mesh before the finish system." },
+  { name: "Construido microcement kit", use: "Emulsion, base and finish coats for the countertop surface." },
+  { name: "Sayer Metalite two-part clear PU", use: "Planned waterproof topcoat - resin plus catalyzer." },
 ];
 
 export default function FieldNotesPage() {
@@ -195,6 +219,33 @@ export default function FieldNotesPage() {
               </article>
             ))}
           </div>
+        </div>
+      </section>
+
+      <section className="px-5 py-24 sm:px-8 md:px-12 md:py-32 lg:px-16 xl:px-24">
+        <div className="mx-auto max-w-[1540px] border-t border-ia-line pt-10">
+          <p className="text-[0.68rem] font-semibold uppercase tracking-[0.2em] text-ia-ink/50">
+            Products used · countertop field test
+          </p>
+          <div className="mt-8 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+            {PRODUCTS_USED.map((p) => (
+              <div key={p.name} className="border border-ia-line p-6">
+                <h3 className="font-editorial text-2xl">{p.name}</h3>
+                <p className="mt-3 text-sm leading-relaxed text-ia-ink/62">{p.use}</p>
+              </div>
+            ))}
+          </div>
+          <p className="mt-8 max-w-2xl text-sm leading-relaxed text-ia-ink/55">
+            Local sourcing options include PintuCity and Home Depot. Stock and
+            the exact product line must be confirmed per product before any
+            build depends on it.
+          </p>
+          <Link
+            href="/field-notes/reference-library"
+            className="mt-10 inline-flex min-h-12 items-center gap-3 bg-ia-ink px-6 py-3 text-sm font-semibold text-ia-paper"
+          >
+            Open the reference library <ArrowRight size={17} />
+          </Link>
         </div>
       </section>
 

@@ -12,25 +12,25 @@ const CATEGORIES = [
   {
     title: "Food",
     icon: Sprout,
-    count: "60 file records",
+    count: "60",
     body: "Growing, storing and planning food for a property that depends less on outside supply.",
   },
   {
     title: "Water",
     icon: Droplets,
-    count: "17 file records",
+    count: "17",
     body: "Capture, storage, filtration and dry-season planning for real lots and real budgets.",
   },
   {
     title: "Energy",
     icon: BatteryCharging,
-    count: "15 file records",
+    count: "15",
     body: "Solar sizing, batteries, backup planning and honest payback assumptions.",
   },
   {
     title: "Shelter",
     icon: Warehouse,
-    count: "79 file records",
+    count: "79",
     body: "Low-cost building systems, panels, coatings and the assemblies that hold them together.",
   },
 ];
@@ -67,18 +67,21 @@ export default function ReferenceLibraryPage() {
               <h2 className="mt-5 font-editorial text-3xl">{title}</h2>
               <p className="mt-3 text-sm leading-relaxed text-ia-ink/62">{body}</p>
               <p className="mt-6 border-t border-ia-line pt-4 text-xs uppercase tracking-[0.14em] text-ia-ink/45">
-                {count} catalogued - links land here as each document is verified
+                {count} topic records - links land here as each document is verified
               </p>
             </div>
           ))}
         </div>
         <p className="mx-auto mt-10 max-w-[1540px] text-sm leading-relaxed text-ia-ink/55">
           The library is assembled from the project&apos;s own reference
-          collection: file records catalogued from filenames so far (Food 60,
-          Water 17, Energy 15, Shelter 79), with 26 more awaiting a content
-          check. Records are filenames, not confirmed distinct books. Links are
-          held back until the copyright question is settled, so entries appear
-          only after each document is verified.
+          collection: 154 file records catalogued from filenames (196 items
+          scanned, 42 excluded as non-book or unrelated). Category counts are
+          topic memberships and overlap on purpose - some records sit in more
+          than one category. 11 records have unclear topics and 26 opaque
+          filenames still need a content check. Records are filenames, not
+          confirmed distinct books. Links are held back until the copyright
+          question is settled, so entries appear only after each document is
+          verified.
         </p>
       </section>
     </main>

@@ -90,7 +90,7 @@ const FIELD_RECORDS = [
     date: "2026-10-19",
     confidence: "In progress · observed owner build",
     title: "Microcement over XPS: the countertop test",
-    body: "XPS core with mesh, Uniblock Basecoat, then a Construido microcement kit (emulsion, base, finish). A Sayer Metalite clear two-part PU topcoat is planned for waterproofing. Lesson so far: the two-part Metalite system (resin plus catalyzer) cannot stretch past its rated coverage - the finish coat has to go on thin, possibly blended with white cement, because another kit is not an option mid-build.",
+    body: "XPS core, Uniblock Basecoat cured two weeks, then a Construido microcement kit (emulsion, base, finish). A Sayer Metalite clear two-part PU topcoat is planned for waterproofing. Lesson so far: the counter measures about 1.43 m2 against a kit rated for about 1 m2, and with no second kit available mid-build the surface had to be planned as one thin continuous coat of each layer.",
   },
   {
     label: "FIELD TEST",
@@ -104,8 +104,7 @@ const FIELD_RECORDS = [
 
 const PRODUCTS_USED = [
   { name: "XPS panels", use: "Lightweight, moisture-resistant core for the countertop form." },
-  { name: "AR fiberglass mesh", use: "Alkali-resistant reinforcement embedded in the base coat." },
-  { name: "Uniblock Basecoat", use: "Base coat over the mesh before the finish system." },
+  { name: "Uniblock Basecoat", use: "Base coat over the XPS core, cured two weeks before the finish system." },
   { name: "Construido microcement kit", use: "Emulsion, base and finish coats for the countertop surface." },
   { name: "Sayer Metalite two-part clear PU", use: "Planned waterproof topcoat - resin plus catalyzer." },
 ];
@@ -118,7 +117,7 @@ export default function FieldNotesPage() {
           <p className="text-[0.68rem] font-semibold uppercase tracking-[0.2em] text-ia-ink/50">
             Field Notes · research before purchase
           </p>
-          <h1 className="mt-6 max-w-[13ch] font-display text-[clamp(4rem,10vw,10rem)] font-normal uppercase leading-[0.8] tracking-[-0.055em]">
+          <h1 className="mt-6 max-w-[13ch] font-display text-[clamp(2.75rem,10vw,10rem)] font-normal uppercase leading-[0.8] tracking-[-0.055em]">
             Depend less. Understand more.
           </h1>
           <div className="mt-10 grid gap-7 border-t border-ia-line pt-7 md:grid-cols-[1.25fr_.75fr] md:items-end">

@@ -12,21 +12,25 @@ const CATEGORIES = [
   {
     title: "Food",
     icon: Sprout,
+    count: "60 file records",
     body: "Growing, storing and planning food for a property that depends less on outside supply.",
   },
   {
     title: "Water",
     icon: Droplets,
+    count: "17 file records",
     body: "Capture, storage, filtration and dry-season planning for real lots and real budgets.",
   },
   {
     title: "Energy",
     icon: BatteryCharging,
+    count: "15 file records",
     body: "Solar sizing, batteries, backup planning and honest payback assumptions.",
   },
   {
     title: "Shelter",
     icon: Warehouse,
+    count: "79 file records",
     body: "Low-cost building systems, panels, coatings and the assemblies that hold them together.",
   },
 ];
@@ -57,21 +61,24 @@ export default function ReferenceLibraryPage() {
 
       <section className="px-5 pb-24 sm:px-8 md:px-12 lg:px-16 xl:px-24">
         <div className="mx-auto grid max-w-[1540px] gap-6 md:grid-cols-2">
-          {CATEGORIES.map(({ title, icon: Icon, body }) => (
+          {CATEGORIES.map(({ title, icon: Icon, count, body }) => (
             <div key={title} className="border border-ia-line p-8">
               <Icon size={22} className="text-ia-ink/60" />
               <h2 className="mt-5 font-editorial text-3xl">{title}</h2>
               <p className="mt-3 text-sm leading-relaxed text-ia-ink/62">{body}</p>
               <p className="mt-6 border-t border-ia-line pt-4 text-xs uppercase tracking-[0.14em] text-ia-ink/45">
-                Books being catalogued - links land here as each title is verified
+                {count} catalogued - links land here as each document is verified
               </p>
             </div>
           ))}
         </div>
         <p className="mx-auto mt-10 max-w-[1540px] text-sm leading-relaxed text-ia-ink/55">
-          The library is assembled from the project&apos;s own reference books.
-          Entries appear only after each link is checked against the actual
-          document, so categories may sit short while cataloguing catches up.
+          The library is assembled from the project&apos;s own reference
+          collection: file records catalogued from filenames so far (Food 60,
+          Water 17, Energy 15, Shelter 79), with 26 more awaiting a content
+          check. Records are filenames, not confirmed distinct books. Links are
+          held back until the copyright question is settled, so entries appear
+          only after each document is verified.
         </p>
       </section>
     </main>
